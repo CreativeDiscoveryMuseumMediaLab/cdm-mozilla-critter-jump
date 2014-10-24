@@ -1,5 +1,12 @@
 domready(function()
 {
     //onReady();
-    alert('this is a ready test');
+    init();
 });
+
+function init() {
+
+    alert('test init()');
+    //game = new GAME.CJEngine();
+
+}
