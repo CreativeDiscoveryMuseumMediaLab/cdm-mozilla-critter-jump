@@ -12,4 +12,6 @@ GAME.CJView = function (engine) {
     this.container = new PIXI.DisplayObjectContainer();
     this.stage.addChild(this.container);
 
+    this.renderer.render(this.stage);
+
 }

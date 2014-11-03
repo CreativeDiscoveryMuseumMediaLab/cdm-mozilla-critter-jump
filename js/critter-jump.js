@@ -13,5 +13,6 @@ var game;
 function init() {
 
     game = new GAME.CJEngine();
+    document.body.appendChild(game.view.renderer.view);
 
 }
