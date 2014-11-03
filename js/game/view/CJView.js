@@ -18,5 +18,13 @@ GAME.CJView = function (engine) {
 GAME.CJView.prototype.update = function() {
 
     this.renderer.render(this.stage);
-    console.log('test');
+}
+
+GAME.CJView.prototype.resize = function(w, h) {
+
+    GAME.width = w;
+    GAME.height = h;
+
+    this.renderer.resize(w,h);
+
 }
