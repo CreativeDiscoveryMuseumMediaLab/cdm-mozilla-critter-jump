@@ -12,6 +12,11 @@ GAME.CJView = function (engine) {
     this.container = new PIXI.DisplayObjectContainer();
     this.stage.addChild(this.container);
 
-    this.renderer.render(this.stage);
 
+}
+
+GAME.CJView.prototype.update = function() {
+
+    this.renderer.render(this.stage);
+    console.log('test');
 }

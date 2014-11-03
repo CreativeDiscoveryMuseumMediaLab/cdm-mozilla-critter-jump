@@ -7,3 +7,7 @@ GAME.CJEngine = function() {
     this.view = new GAME.CJView(this);
 
 }
+
+GAME.CJEngine.prototype.update = function() {
+    this.view.update();
+}

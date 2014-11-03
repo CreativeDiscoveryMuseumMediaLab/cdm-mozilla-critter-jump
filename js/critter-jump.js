@@ -15,4 +15,10 @@ function init() {
     game = new GAME.CJEngine();
     document.body.appendChild(game.view.renderer.view);
 
+    requestAnimFrame(update);
+}
+
+function update() {
+    game.update();
+    requestAnimFrame(update);
 }
