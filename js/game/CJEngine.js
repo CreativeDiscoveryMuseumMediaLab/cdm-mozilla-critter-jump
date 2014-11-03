@@ -1,13 +1,22 @@
-// establish the GAME class
+/**
+ * establish the GAME class
+ * @class
+ */
 var GAME = GAME || {};
 
-// build the GAME.CJEngine constructor
-GAME.CJEngine = function() {
-
+/**
+ * the GAME engine
+ * @constructor
+ */
+GAME.CJEngine = function()
+{
     this.view = new GAME.CJView(this);
-
 }
 
-GAME.CJEngine.prototype.update = function() {
+/**
+ * runs the game loop
+ */
+GAME.CJEngine.prototype.update = function()
+{
     this.view.update();
 }
