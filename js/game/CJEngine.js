@@ -4,7 +4,6 @@ var GAME = GAME || {};
 // build the GAME.CJEngine constructor
 GAME.CJEngine = function() {
 
-    // run an alert within the constructor
-    alert('test stuff()');
+    this.view = new GAME.CJView(this);
 
 }
