@@ -25,6 +25,8 @@ var height;
  */
 function init()
 {
+    document.body.scroll = "no";
+    
     game = new GAME.CJEngine();
     document.body.appendChild(game.view.renderer.view);
 
