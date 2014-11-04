@@ -1,8 +1,8 @@
 // recall that this simply checks to make sure the page is completely loaded before it does anything.
-// once loaded, we simply call our init function to get things moving
+// once loaded, we simply call our onReady() function to get things moving
 domready(function()
 {
-    init();
+    onReady();
 });
 
 // here we are listening for a 'resize' event
@@ -12,26 +12,65 @@ window.addEventListener('resize', function()
     resize();
 });
 
-//this is an on-"" event. ON orientation change, we call the resize() function.
+// On orientation change, we call the resize() function.
 window.onorientationchange = resize;
 
 // list variables
 var game;
 var width;
 var height;
+var loader;
+var loadInterval = false;
+var pauseButton = false;
+
+/**
+ * load assets, set initial conditions
+ */
+function onReady()
+{
+    // make sure the visitor can't scroll in the window
+    document.body.scroll = "no";
+
+    // list images, spritesheets in a PIXI asset array
+    loader = new PIXI.AssetLoader([
+        "assets/hud/pause.png",
+    ]);
+
+    // listening for PIXI assets to have finished loading
+    loader.addEventListener('onComplete', function (event)
+    {
+        init();
+        clearInterval(loadInterval);
+    });
+
+    // actually load the PIXI assets listed above
+    loader.load();
+
+    resize();
+}
 
 /**
  * this will be the main function that initializes the game
  */
 function init()
 {
-    document.body.scroll = "no";
-    
     game = new GAME.CJEngine();
     document.body.appendChild(game.view.renderer.view);
 
     // our initial update game loop call
     requestAnimFrame(update);
+
+    // create a pause button sprite to be used later
+    // notice alpha = 0 (transparent) and visible = false
+    pauseButton = PIXI.Sprite.fromFrame("assets/hud/pause.png");
+    pauseButton.interactive = true;
+    pauseButton.anchor.x = 0.5;
+    pauseButton.anchor.y = 0.5;
+    pauseButton.alpha = 0;
+    pauseButton.visible = false;
+    pauseButton.type = "button";
+
+    this.game.view.stage.addChild(pauseButton);
 
     resize();
 }
