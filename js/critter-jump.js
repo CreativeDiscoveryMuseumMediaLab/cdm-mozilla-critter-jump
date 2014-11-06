@@ -70,6 +70,8 @@ function init()
 
     game = new GAME.CJEngine();
     document.body.appendChild(game.view.renderer.view);
+    game.view.renderer.view.style.position = "absolute";
+    game.view.renderer.view.webkitImageSmoothingEnabled = false
 
     // our initial update game loop call
     requestAnimFrame(update);
