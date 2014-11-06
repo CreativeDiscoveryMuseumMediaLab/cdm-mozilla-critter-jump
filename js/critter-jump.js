@@ -30,6 +30,7 @@ var gameMode = 0;
 var width;
 var height;
 var loader;
+var black;
 var interactive = true;
 var loadInterval = false;
 var pauseButton = false;
@@ -45,6 +46,7 @@ function onReady()
     // list images, spritesheets in a PIXI asset array
     loader = new PIXI.AssetLoader([
         "assets/hud/pause.png",
+        "img/blackSquare.jpg",
     ]);
 
     // listening for PIXI assets to have finished loading
@@ -75,6 +77,14 @@ function init()
 
     // our initial update game loop call
     requestAnimFrame(update);
+
+    black = new PIXI.Sprite.fromImage("img/blacksquare.jpg");
+    this.game.view.hud.addChild(black);
+
+    TweenLite.to(black, 0.3, {
+        alpha:0.75,
+        delay:0.5
+    });
 
     // create a pause button sprite to be used later
     // notice alpha = 0 (transparent) and visible = false

@@ -15,11 +15,19 @@ GAME.CJView = function (engine)
     this.renderer = new PIXI.autoDetectRenderer(600,800);
     this.stage = new PIXI.Stage(0xFF0000);
 
-    console.log("Renderer Height: " + this.renderer.height);
-    console.log("Background Color: " + this.stage.backgroundColor);
-
     this.container = new PIXI.DisplayObjectContainer();
+    this.container.hitArea = this.stage.hitArea;
+    this.container.interactive = true;
+
+    this.hud = new PIXI.DisplayObjectContainer();
+    this.game = new PIXI.DisplayObjectContainer();
+    this.gameFront = new PIXI.DisplayObjectContainer();
+
+    this.container.addChild(this.game);
+    this.container.addChild(this.gameFront);
+
     this.stage.addChild(this.container);
+    this.stage.addChild(this.hud);
 }
 
 /**
