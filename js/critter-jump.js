@@ -15,6 +15,15 @@ window.addEventListener('resize', function()
 // On orientation change, we call the resize() function.
 window.onorientationchange = resize;
 
+var GAME_MODE = {
+    TITLE : 0,
+    COUNT_DOWN : 1,
+    PLAYING : 2,
+    GAME_OVER : 3,
+    INTRO : 4,
+    PAUSED : 5
+};
+
 // list variables
 var game;
 var width;
