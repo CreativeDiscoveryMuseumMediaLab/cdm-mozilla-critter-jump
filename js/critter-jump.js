@@ -117,12 +117,20 @@ function resize()
 
     if(game)
     {
+        // resize view and elements within the view to match
+
         var view = game.view.renderer.view;
         view.style.height = h * ratio +"px";
 
         var newWidth = (width / ratio);
 
         view.style.width = width +"px";
+
+        if(black)
+        {
+            black.scale.x = newWidth/16;
+            black.scale.y = h/16;
+        }
 
         game.view.resize(newWidth , h);
 
