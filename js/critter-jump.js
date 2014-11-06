@@ -26,6 +26,7 @@ var GAME_MODE = {
 
 // list variables
 var game;
+var gameMode = 0;
 var width;
 var height;
 var loader;
@@ -63,6 +64,7 @@ function onReady()
  */
 function init()
 {
+    gameMode = GAME_MODE.INTRO;
     game = new GAME.CJEngine();
     document.body.appendChild(game.view.renderer.view);
 
