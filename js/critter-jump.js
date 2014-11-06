@@ -79,7 +79,7 @@ function init()
     // our initial update game loop call
     requestAnimFrame(update);
 
-    black = new PIXI.Sprite.fromImage("img/blacksquare.jpg");
+    black = new PIXI.Sprite.fromImage("img/blackSquare.jpg");
     this.game.view.hud.addChild(black);
 
     TweenLite.to(black, 0.3, {
