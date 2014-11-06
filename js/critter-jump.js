@@ -30,6 +30,7 @@ var gameMode = 0;
 var width;
 var height;
 var loader;
+var interactive = true;
 var loadInterval = false;
 var pauseButton = false;
 
@@ -65,6 +66,8 @@ function onReady()
 function init()
 {
     gameMode = GAME_MODE.INTRO;
+    interactive = false;
+
     game = new GAME.CJEngine();
     document.body.appendChild(game.view.renderer.view);
 
