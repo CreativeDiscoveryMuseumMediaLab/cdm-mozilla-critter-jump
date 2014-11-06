@@ -47,6 +47,7 @@ function onReady()
     loader = new PIXI.AssetLoader([
         "assets/hud/pause.png",
         "img/blackSquare.jpg",
+        "img/HudAssets-hd.json",
     ]);
 
     // listening for PIXI assets to have finished loading
@@ -84,6 +85,19 @@ function init()
     TweenLite.to(black, 0.3, {
         alpha:0.75,
         delay:0.5
+    });
+
+    logo = PIXI.Sprite.fromFrame("runLogo.png");
+    logo.anchor.x = 0.5;
+    logo.anchor.y = 0.5;
+    logo.alpha = 0;
+
+    this.game.view.hud.addChild(logo);
+
+    TweenLite.to(logo, 0.1, {
+        alpha : 1,
+        delay : 0.6,
+        //onComplete : onIntroFaded
     });
 
     // create a pause button sprite to be used later
@@ -125,6 +139,9 @@ function resize()
         var newWidth = (width / ratio);
 
         view.style.width = width +"px";
+
+        this.logo.position.x = newWidth / 2;
+        this.logo.position.y = h/2 - 20;
 
         if(black)
         {
