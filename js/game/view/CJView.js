@@ -13,7 +13,7 @@ GAME.CJView = function (engine)
 {
     this.engine = engine;
     this.renderer = new PIXI.autoDetectRenderer(600,800);
-    this.stage = new PIXI.Stage(0xFF0000);
+    this.stage = new PIXI.Stage(0xFFFFFF);
 
     this.container = new PIXI.DisplayObjectContainer();
     this.container.hitArea = this.stage.hitArea;

@@ -48,6 +48,8 @@ function onReady()
         "assets/hud/pause.png",
         "img/blackSquare.jpg",
         "img/HudAssets-hd.json",
+        "img/CDM-wide-small.png",
+        "img/Mozilla_Foundation_logo.gif",
     ]);
 
     // listening for PIXI assets to have finished loading
@@ -79,26 +81,7 @@ function init()
     // our initial update game loop call
     requestAnimFrame(update);
 
-    black = new PIXI.Sprite.fromImage("img/blackSquare.jpg");
-    this.game.view.hud.addChild(black);
-
-    TweenLite.to(black, 0.3, {
-        alpha:0.75,
-        delay:0.5
-    });
-
-    logo = PIXI.Sprite.fromFrame("runLogo.png");
-    logo.anchor.x = 0.5;
-    logo.anchor.y = 0.5;
-    logo.alpha = 0;
-
-    this.game.view.hud.addChild(logo);
-
-    TweenLite.to(logo, 0.1, {
-        alpha : 1,
-        delay : 0.6,
-        //onComplete : onIntroFaded
-    });
+    sponsorIntro();
 
     // create a pause button sprite to be used later
     // notice alpha = 0 (transparent) and visible = false
@@ -140,8 +123,11 @@ function resize()
 
         view.style.width = width +"px";
 
-        this.logo.position.x = newWidth / 2;
-        this.logo.position.y = h/2 - 20;
+        this.cdm_logo.position.x = newWidth / 2;
+        this.cdm_logo.position.y = h/2 - 20;
+
+        this.mozilla_logo.position.x = newWidth / 2;
+        this.mozilla_logo.position.y = h/2 - 20;
 
         if(black)
         {
@@ -166,4 +152,42 @@ function update()
     game.update();
     // requestAnimFrame simply recalls this update() function in a loop
     requestAnimFrame(update);
+}
+
+function sponsorIntro() {
+    black = new PIXI.Sprite.fromImage("img/blackSquare.jpg");
+    this.game.view.hud.addChild(black);
+
+    cdm_logo = PIXI.Sprite.fromImage("img/CDM-wide-small.png");
+    cdm_logo.anchor.x = 0.5;
+    cdm_logo.anchor.y = 0.5;
+    cdm_logo.alpha = 0;
+
+    mozilla_logo = PIXI.Sprite.fromImage("img/Mozilla_Foundation_logo.gif");
+    mozilla_logo.anchor.x = 0.5;
+    mozilla_logo.anchor.y = 0.5;
+    mozilla_logo.width = 300 * (2224/2091);
+    mozilla_logo.height = 300 * (2224/2091);
+    mozilla_logo.alpha = 0;
+
+    this.game.view.hud.addChild(cdm_logo);
+    this.game.view.hud.addChild(mozilla_logo);
+
+    TweenLite.to(mozilla_logo, 0.5, {
+        delay:0.5,
+        alpha: 1,
+        onComplete : (function() {
+            TweenLite.to(mozilla_logo, 0.3, {
+                delay: 2,
+                alpha: 0,
+            });
+        }),
+    });
+
+    black.alpha = 0;
+    TweenLite.to(black, 0.5, {
+        alpha: 1,
+        delay: 3,
+    });
+
 }
