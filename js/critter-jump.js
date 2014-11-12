@@ -83,17 +83,6 @@ function init()
 
     sponsorIntro();
 
-    // create a pause button sprite to be used later
-    // notice alpha = 0 (transparent) and visible = false
-    pauseButton = PIXI.Sprite.fromFrame("assets/hud/pause.png");
-    pauseButton.interactive = true;
-    pauseButton.anchor.x = 0.5;
-    pauseButton.anchor.y = 0.5;
-    pauseButton.alpha = 0;
-    pauseButton.visible = false;
-    pauseButton.type = "button";
-
-    this.game.view.stage.addChild(pauseButton);
 
     resize();
 }
@@ -184,7 +173,6 @@ function sponsorIntro() {
             });
         })
     });
-
 
     TweenLite.to(black, 0.5, {
         delay: 3.3,
