@@ -31,6 +31,8 @@ var width;
 var height;
 var loader;
 var black;
+var cdm_logo;
+var mozilla_logo;
 var interactive = true;
 var loadInterval = false;
 var pauseButton = false;
@@ -78,11 +80,36 @@ function init()
     game.view.renderer.view.style.position = "absolute";
     game.view.renderer.view.webkitImageSmoothingEnabled = false
 
+    // add objects to be manipulated before calling resize
+    black = new PIXI.Sprite.fromImage("img/blackSquare.jpg");
+    black.alpha = 0;
+
+    cdm_logo = PIXI.Sprite.fromImage("img/CDM-wide-small.png");
+    cdm_logo.anchor.x = 0.5;
+    cdm_logo.anchor.y = 0.5;
+    cdm_logo.alpha = 0;
+
+    mozilla_logo = PIXI.Sprite.fromImage("img/Mozilla_Foundation_logo.gif");
+    mozilla_logo.anchor.x = 0.5;
+    mozilla_logo.anchor.y = 0.5;
+    mozilla_logo.width = 300 * (2224/2091);
+    mozilla_logo.height = 300 * (2224/2091);
+    mozilla_logo.alpha = 0;
+
+    game_logo = PIXI.Sprite.fromFrame("runLogo.png");
+    game_logo.anchor.x = 0.5;
+    game_logo.anchor.y = 0.5;
+    game_logo.alpha = 0;
+
+    this.game.view.hud.addChild(black);
+    this.game.view.hud.addChild(cdm_logo);
+    this.game.view.hud.addChild(mozilla_logo);
+    this.game.view.hud.addChild(game_logo);
+
     // our initial update game loop call
     requestAnimFrame(update);
 
     sponsorIntro();
-
 
     resize();
 }
@@ -143,25 +170,8 @@ function update()
     requestAnimFrame(update);
 }
 
-function sponsorIntro() {
-    black = new PIXI.Sprite.fromImage("img/blackSquare.jpg");
-    this.game.view.hud.addChild(black);
-    black.alpha = 0;
-
-    cdm_logo = PIXI.Sprite.fromImage("img/CDM-wide-small.png");
-    cdm_logo.anchor.x = 0.5;
-    cdm_logo.anchor.y = 0.5;
-    cdm_logo.alpha = 0;
-
-    mozilla_logo = PIXI.Sprite.fromImage("img/Mozilla_Foundation_logo.gif");
-    mozilla_logo.anchor.x = 0.5;
-    mozilla_logo.anchor.y = 0.5;
-    mozilla_logo.width = 300 * (2224/2091);
-    mozilla_logo.height = 300 * (2224/2091);
-    mozilla_logo.alpha = 0;
-
-    this.game.view.hud.addChild(cdm_logo);
-    this.game.view.hud.addChild(mozilla_logo);
+function sponsorIntro()
+{
 
     TweenLite.to(mozilla_logo, 0.5, {
         delay:0.5,
