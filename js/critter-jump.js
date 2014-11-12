@@ -33,6 +33,7 @@ var loader;
 var black;
 var cdm_logo;
 var mozilla_logo;
+var game_logo;
 var interactive = true;
 var loadInterval = false;
 var pauseButton = false;
@@ -145,6 +146,9 @@ function resize()
         this.mozilla_logo.position.x = newWidth / 2;
         this.mozilla_logo.position.y = h/2 - 20;
 
+        this.game_logo.position.x = newWidth / 2;
+        this.game_logo.position.y = h/2 - 20;
+
         if(black)
         {
             black.scale.x = newWidth/16;
@@ -195,9 +199,21 @@ function sponsorIntro()
         onComplete: (function () {
             TweenLite.to(cdm_logo, 0.3, {
                 delay: 2,
-                alpha: 0
+                alpha: 0,
+                onComplete: onGameTitle
             });
         })
     });
+
+}
+
+function onGameTitle()
+{
+
+    TweenLite.to(game_logo, 0.5, {
+        alpha: 1,
+    });
+
+    resize();
 
 }
