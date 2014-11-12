@@ -157,6 +157,7 @@ function update()
 function sponsorIntro() {
     black = new PIXI.Sprite.fromImage("img/blackSquare.jpg");
     this.game.view.hud.addChild(black);
+    black.alpha = 0;
 
     cdm_logo = PIXI.Sprite.fromImage("img/CDM-wide-small.png");
     cdm_logo.anchor.x = 0.5;
@@ -181,13 +182,24 @@ function sponsorIntro() {
                 delay: 2,
                 alpha: 0,
             });
-        }),
+        })
     });
 
-    black.alpha = 0;
+
     TweenLite.to(black, 0.5, {
+        delay: 3.3,
         alpha: 1,
-        delay: 3,
+    });
+
+    TweenLite.to(cdm_logo, 0.5, {
+        delay: 3.3,
+        alpha: 1,
+        onComplete: (function () {
+            TweenLite.to(cdm_logo, 0.3, {
+                delay: 2,
+                alpha: 0
+            });
+        })
     });
 
 }
