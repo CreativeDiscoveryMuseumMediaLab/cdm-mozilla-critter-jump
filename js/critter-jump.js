@@ -50,6 +50,8 @@ function onReady()
     loader = new PIXI.AssetLoader([
         "assets/hud/pause.png",
         "assets/hud/game-play.png",
+        "assets/hud/credits-btn.png",
+        "assets/hud/high-score-btn.png",
         "img/blackSquare.jpg",
         "img/HudAssets-hd.json",
         "img/CDM-wide-small.png",
@@ -109,10 +111,34 @@ function init()
     game_play_btn.alpha = 0;
     game_play_btn.interactive = true;
 
+    high_score_btn = PIXI.Sprite.fromImage("assets/hud/high-score-btn.png");
+    high_score_btn.anchor.x = 0.5;
+    high_score_btn.anchor.y = 0.5;
+    high_score_btn.alpha = 0;
+    high_score_btn.interactive = true;
+
+    credits_btn = PIXI.Sprite.fromImage("assets/hud/credits-btn.png");
+    credits_btn.anchor.x = 0.5;
+    credits_btn.anchor.y = 0.5;
+    credits_btn.alpha = 0;
+    credits_btn.interactive = true;
+
     game_play_btn.mousedown = game_play_btn.touchstart = function(event)
     {
         event.originalEvent.preventDefault();
         console.log("We're ready to play!");
+    }
+
+    high_score_btn.mousedown = high_score_btn.touchstart = function(event)
+    {
+        event.originalEvent.preventDefault();
+        console.log("What's my high score?!");
+    }
+
+    credits_btn.mousedown = credits_btn.touchstart = function(event)
+    {
+        event.originalEvent.preventDefault();
+        console.log("Show me the money!");
     }
 
     this.game.view.hud.addChild(black);
@@ -120,6 +146,8 @@ function init()
     this.game.view.hud.addChild(mozilla_logo);
     this.game.view.hud.addChild(game_logo);
     this.game.view.hud.addChild(game_play_btn);
+    this.game.view.hud.addChild(high_score_btn);
+    this.game.view.hud.addChild(credits_btn);
 
     // our initial update game loop call
     requestAnimFrame(update);
@@ -171,6 +199,12 @@ function resize()
             black.scale.x = newWidth/16;
             black.scale.y = h/16;
         }
+
+        credits_btn.position.x = newWidth - this.credits_btn.width/2 - 30;
+        credits_btn.position.y = h - this.credits_btn.height/2 - 30;
+
+        high_score_btn.position.x = this.credits_btn.position.x;
+        high_score_btn.position.y = this.credits_btn.position.y - this.credits_btn.height - 30;
 
         game.view.resize(newWidth , h);
 
@@ -239,6 +273,14 @@ function showGameTitle()
     });
 
     TweenLite.to(game_play_btn, 0.5, {
+        alpha: 1,
+    });
+
+    TweenLite.to(credits_btn, 0.5, {
+        alpha: 1,
+    });
+
+    TweenLite.to(high_score_btn, 0.5, {
         alpha: 1,
     });
 
