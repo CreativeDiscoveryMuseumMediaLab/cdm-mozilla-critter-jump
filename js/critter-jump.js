@@ -49,6 +49,7 @@ function onReady()
     // list images, spritesheets in a PIXI asset array
     loader = new PIXI.AssetLoader([
         "assets/hud/pause.png",
+        "assets/hud/game-play.png",
         "img/blackSquare.jpg",
         "img/HudAssets-hd.json",
         "img/CDM-wide-small.png",
@@ -102,10 +103,23 @@ function init()
     game_logo.anchor.y = 0.5;
     game_logo.alpha = 0;
 
+    game_play_btn = PIXI.Sprite.fromImage("assets/hud/game-play.png");
+    game_play_btn.anchor.x = 0.5;
+    game_play_btn.anchor.y = 0.5;
+    game_play_btn.alpha = 0;
+    game_play_btn.interactive = true;
+
+    game_play_btn.mousedown = game_play_btn.touchstart = function(event)
+    {
+        event.originalEvent.preventDefault();
+        console.log("We're ready to play!");
+    }
+
     this.game.view.hud.addChild(black);
     this.game.view.hud.addChild(cdm_logo);
     this.game.view.hud.addChild(mozilla_logo);
     this.game.view.hud.addChild(game_logo);
+    this.game.view.hud.addChild(game_play_btn);
 
     // our initial update game loop call
     requestAnimFrame(update);
@@ -148,6 +162,9 @@ function resize()
 
         this.game_logo.position.x = newWidth / 2;
         this.game_logo.position.y = h/2 - 50;
+
+        this.game_play_btn.position.x = newWidth / 2;
+        this.game_play_btn.position.y = h/2 + this.game_logo.height/2;
 
         if(black)
         {
@@ -218,6 +235,10 @@ function showGameTitle()
 {
 
     TweenLite.to(game_logo, 0.5, {
+        alpha: 1,
+    });
+
+    TweenLite.to(game_play_btn, 0.5, {
         alpha: 1,
     });
 
