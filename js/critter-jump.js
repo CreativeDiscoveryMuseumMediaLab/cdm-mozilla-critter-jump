@@ -147,7 +147,7 @@ function resize()
         this.mozilla_logo.position.y = h/2 - 20;
 
         this.game_logo.position.x = newWidth / 2;
-        this.game_logo.position.y = h/2 - 20;
+        this.game_logo.position.y = h/2 - 50;
 
         if(black)
         {
@@ -180,7 +180,6 @@ function update()
  */
 function sponsorIntro()
 {
-
 
     TweenLite.to(mozilla_logo, 0.5, {
         delay:0.5,
