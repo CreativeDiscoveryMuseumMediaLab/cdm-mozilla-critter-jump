@@ -174,8 +174,13 @@ function update()
     requestAnimFrame(update);
 }
 
+/**
+ * show then hide the sponsor logos and disclaimers
+ * then move on to the game title (main menu)
+ */
 function sponsorIntro()
 {
+
 
     TweenLite.to(mozilla_logo, 0.5, {
         delay:0.5,
@@ -200,14 +205,17 @@ function sponsorIntro()
             TweenLite.to(cdm_logo, 0.3, {
                 delay: 2,
                 alpha: 0,
-                onComplete: onGameTitle
+                onComplete: showGameTitle
             });
         })
     });
 
 }
 
-function onGameTitle()
+/**
+ * main menu with the logo, play and other options
+ */
+function showGameTitle()
 {
 
     TweenLite.to(game_logo, 0.5, {
