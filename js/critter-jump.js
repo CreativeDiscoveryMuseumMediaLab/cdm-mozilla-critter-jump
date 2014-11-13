@@ -267,20 +267,21 @@ function sponsorIntro()
  */
 function showGameTitle()
 {
+    var fade_in_time = 0.5;
 
-    TweenLite.to(game_logo, 0.5, {
+    TweenLite.to(game_logo, fade_in_time, {
         alpha: 1,
     });
 
-    TweenLite.to(game_play_btn, 0.5, {
+    TweenLite.to(game_play_btn, fade_in_time, {
         alpha: 1,
     });
 
-    TweenLite.to(credits_btn, 0.5, {
+    TweenLite.to(credits_btn, fade_in_time, {
         alpha: 1,
     });
 
-    TweenLite.to(high_score_btn, 0.5, {
+    TweenLite.to(high_score_btn, fade_in_time, {
         alpha: 1,
     });
 
