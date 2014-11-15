@@ -1,0 +1,15 @@
+body {
+    background-color: gray;
+}
+#sponsors {
+    list-style: none;
+}
+.my_leftl {
+    float: left;
+    width: 250px; 
+}
+.my_leftp {
+    float: left;
+    width: 250px;
+    margin-top: 40px;
+}
