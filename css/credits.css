@@ -1,0 +1,18 @@
+body {
+    background-color: white;
+}
+#sponsors {
+    list-style: none;
+}
+.my_leftl {
+    float: left;
+    width: 250px;
+    height: 158px;
+    margin-left:10px;
+    margin-right:10px;
+}
+.my_leftp {
+    float: left;
+    width: 250px;
+    margin-top: 40px;
+}
