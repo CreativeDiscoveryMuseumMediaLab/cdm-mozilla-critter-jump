@@ -1,18 +1,21 @@
 body {
     background-color: white;
 }
-#sponsors {
-    list-style: none;
-}
-.my_leftl {
+.left {
     float: left;
-    width: 250px;
-    height: 158px;
-    margin-left:10px;
-    margin-right:10px;
+    width: 248px;
+    margin: 20px;
 }
-.my_leftp {
-    float: left;
-    width: 250px;
-    margin-top: 40px;
+
+.sponsors {
+    margin: 0 auto;
+}
+
+.sponsors {
+    clear: both;
+    width: 580px;
+    margin: 0 auto;
+}
+#mozillap p{
+    text-align: right;
 }
