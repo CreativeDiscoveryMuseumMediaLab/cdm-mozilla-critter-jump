@@ -4,7 +4,10 @@ Critterer.Boot = function () {};
 
 Critterer.Boot.prototype = {
 
-    preload: function () {},
+    preload: function () {
+        this.load.image('preload_bar', 'img/hud/loader_bar.png');
+        this.load.image('critter_logo', 'img/critter_logo.gif');
+    },
 
     create: function () {
         // set max number of inputs (only one mouse, finger, curser, etc)
@@ -23,5 +26,7 @@ Critterer.Boot.prototype = {
 
         this.input.addPointer();
         this.stage.backgroundColor = '#171642';
+
+        this.state.start('Preloader');
     }
 }
