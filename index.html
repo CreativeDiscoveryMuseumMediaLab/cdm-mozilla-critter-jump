@@ -4,12 +4,15 @@
 	<title>Critterer</title>
   <link rel="stylesheet" href="css/main.css" />
   <script type="text/javascript" src="lib/phaser.js"></script>
+  <script type="text/javascript" src="js/Boot.js"></script>
 </head>
 <body>
   <div id="game_container"></div>
   <script type="text/javascript">
     window.onload = function () {
       var game = new Phaser.Game(540,960, Phaser.AUTO, 'game_container');
+      game.state.add('Boot', Critterer.Boot);
+      game.state.start('Boot');
     }
   </script>
 </body>
