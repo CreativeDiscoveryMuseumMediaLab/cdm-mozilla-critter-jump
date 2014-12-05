@@ -1,14 +1,28 @@
 var Critterer = {};
 
+/**
+ * preload Preloader assets, setup game stage and scale, start Preloader
+ * @constructor
+ */
 Critterer.Boot = function () {};
 
 Critterer.Boot.prototype = {
 
+    /**
+     * Implements preload()
+     * preload any Preloader assets
+     * the preload method fires after the constructor method is complete
+     * @todo display sponsor logos
+     */
     preload: function () {
         this.load.image('preload_bar', 'img/hud/loader_bar.png');
         this.load.image('critterer_logo', 'img/critterer_logo.png');
     },
 
+    /**
+     * Implements create()
+     * the create method fires once the preload method is complete
+     */
     create: function () {
         // set max number of inputs (only one mouse, finger, curser, etc)
         this.input.maxPointers = 1;

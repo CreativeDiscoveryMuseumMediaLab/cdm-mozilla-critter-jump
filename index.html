@@ -11,9 +11,14 @@
   <div id="game_container"></div>
   <script type="text/javascript">
     window.onload = function () {
+      // create game object, width, height, and attach to div container
       var game = new Phaser.Game(960, 540, Phaser.AUTO, 'game_container');
+
+      // add game states
       game.state.add('Boot', Critterer.Boot);
       game.state.add('Preloader', Critterer.Preloader);
+
+      // initiate game at Boot state
       game.state.start('Boot');
     }
   </script>
