@@ -6,7 +6,7 @@ Critterer.Boot.prototype = {
 
     preload: function () {
         this.load.image('preload_bar', 'img/hud/loader_bar.png');
-        this.load.image('critterer_logo', 'img/critterer_logo.gif');
+        this.load.image('critterer_logo', 'img/critterer_logo.png');
     },
 
     create: function () {
