@@ -6,6 +6,7 @@
   <script type="text/javascript" src="lib/phaser.js"></script>
   <script type="text/javascript" src="js/Boot.js"></script>
   <script type="text/javascript" src="js/Preloader.js"></script>
+  <script type="text/javascript" src="js/MainMenu.js"></script>
 </head>
 <body>
   <div id="game_container"></div>
@@ -17,6 +18,7 @@
       // add game states
       game.state.add('Boot', Critterer.Boot);
       game.state.add('Preloader', Critterer.Preloader);
+      game.state.add('MainMenu', Critterer.MainMenu);
 
       // initiate game at Boot state
       game.state.start('Boot');
