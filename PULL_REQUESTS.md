@@ -34,7 +34,7 @@ Make changes, run tests, commit etc.
 
 If it's a significant or difficult story, you may be unsure if you're on the right track. You could ask for some feedback now by pushing your commits to the remote for others to review:
 
-`(masquerading) $ git push -u origin feature/masquerading`
+`(masquerading) $ git push -u origin masquerading`
 
 The `-u` option adds an upstream tracking reference to your local branch, meaning that you can run push subsequent commits using `git push` without having to specify the remote and branch names (and run `git pull` without additional arguments).
 
