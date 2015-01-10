@@ -21,6 +21,12 @@ Critterer.MainMenu.prototype = {
             //this.critterer_logo.anchor.setTo(0.5, 0.5);
 
         },
-        update: function() {}
+        update: function() {
+                
+            if(this.game.input.activePointer.justPressed()) {
+              this.game.state.start('Game');
+            }
+
+        }
 
 }
