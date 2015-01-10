@@ -17,7 +17,7 @@ Critterer.MainMenu.prototype = {
         update: function() {
                 
         if(this.game.input.activePointer.justPressed()) {
-      this.game.state.start('game');
+      this.game.state.start('Game');
     }
         }
 
