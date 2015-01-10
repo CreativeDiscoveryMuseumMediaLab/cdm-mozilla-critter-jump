@@ -5,6 +5,7 @@
  */
 Critterer.Preloader = function(game) {
     this.preload_bar = null;
+    this.loader_lbl = null;
     this.game_play_btn = null;
     this.ready = false;
 }
