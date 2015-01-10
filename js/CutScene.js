@@ -1,7 +1,7 @@
 var Critterer = {};
 
-//title screen
-Critterer.CutScene = function(){};
+//cut scene to play videos between game play
+Critterer.CutScene = function(game){};
 
 Critterer.CutScene.prototype = {
   create: function() {
