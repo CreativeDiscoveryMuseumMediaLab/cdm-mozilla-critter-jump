@@ -45,6 +45,7 @@ Critterer.Preloader.prototype = {
      */
     create: function () {
         this.preload_bar.cropEnabled = false;
+        this.loader_lbl.setText("Loading . . .");
     },
 
     /**
