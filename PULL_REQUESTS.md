@@ -40,7 +40,7 @@ The `-u` option adds an upstream tracking reference to your local branch, meanin
 
 ### Submit pull request
 
-Use the Github site to create a pull request. A couple of things to be aware of:
+Use the Github site to create a pull request. First, switch to your branch on the Github website. Then, click on the pull requests tab on the right. At this point, you should be able to click create pull request. A couple of things to be aware of:
 
 Use Github's preview facilties to ensure the pull request is well structured and clear. The description should explain what the pull request contains as well as the thinking behind it. Once the pull request is created, you should find someone on your team to review it and send them a link to the request using the project mailing list so anyone else with an interest can take a look.
 
