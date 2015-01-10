@@ -17,6 +17,19 @@ Critterer.Preloader.prototype = {
      * preload all remaining game assets
      */
     preload: function () {
+
+        this.loader_lbl = this.add.text(
+            this.world.centerX,
+            this.world.centerY - 50,
+            "",
+            {
+                size: "32px",
+                fill: "#FFF",
+                align: "center"
+            }
+        );
+        this.loader_lbl.anchor.setTo(0.5,0.5);
+
         this.preload_bar = this.add.sprite(this.world.centerX, this.world.centerY +50, 'preload_bar');
         this.preload_bar.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(this.preload_bar);
