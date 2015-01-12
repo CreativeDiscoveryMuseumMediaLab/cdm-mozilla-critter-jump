@@ -6,7 +6,6 @@ Critterer.CutScene.prototype = {
   create: function() {
 
       $.fancybox({
-          //type          : 'iframe',
           maxWidth	    : 800,
           maxHeight	    : 600,
           fitToView	    : true,
