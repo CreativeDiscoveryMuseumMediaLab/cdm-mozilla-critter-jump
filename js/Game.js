@@ -1,5 +1,3 @@
-var Critterer = {};
-
 //title screen
 Critterer.Game = function(game){};
 

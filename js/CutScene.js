@@ -1,5 +1,3 @@
-var Critterer = {};
-
 //cut scene to play videos between game play
 Critterer.CutScene = function(game){};
 
