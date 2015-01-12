@@ -5,7 +5,7 @@
  */
 Critterer.Preloader = function(game) {
     this.preload_bar = null;
-    this.critterer_logo = null;
+    this.loader_lbl = null;
     this.game_play_btn = null;
     this.ready = false;
 }
@@ -17,14 +17,26 @@ Critterer.Preloader.prototype = {
      * preload all remaining game assets
      */
     preload: function () {
+
+        this.loader_lbl = this.add.text(
+            this.world.centerX,
+            this.world.centerY - 50,
+            "",
+            {
+                size: "32px",
+                fill: "#FFF",
+                align: "center"
+            }
+        );
+        this.loader_lbl.anchor.setTo(0.5,0.5);
+
         this.preload_bar = this.add.sprite(this.world.centerX, this.world.centerY +50, 'preload_bar');
         this.preload_bar.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(this.preload_bar);
 
-        this.critterer_logo = this.add.sprite(this.world.centerX, this.world.centerY - 75, 'critterer_logo');
-        this.critterer_logo.anchor.setTo(0.5, 0.5);
-
-        this.load.image('game_play_btn', 'img/game-play.png');
+        // pre load assets for the rest of the game (e.g. Main Menu, Game, etc.)
+        this.load.image('critterer_logo', 'img/critterer_logo.png');
+        this.load.image('game_play_btn', 'img/hud/game-play.png');
     },
 
     /**
@@ -33,6 +45,7 @@ Critterer.Preloader.prototype = {
      */
     create: function () {
         this.preload_bar.cropEnabled = false;
+        this.loader_lbl.setText("Loading . . .");
     },
 
     /**
