@@ -3,7 +3,5 @@ Critterer.Game = function(game){};
 
 Critterer.Game.prototype = {
   create: function() {}, 
-  update: function() {
-    
-  },
+  update: function() {}
 }; 
