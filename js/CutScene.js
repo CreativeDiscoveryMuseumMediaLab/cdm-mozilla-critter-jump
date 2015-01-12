@@ -5,6 +5,8 @@ Critterer.CutScene.prototype = {
 
   create: function() {
 
+      // fancybox normally opens via a click event
+      // here we are calling the fancybox on load
       $.fancybox({
           maxWidth	    : 800,
           maxHeight	    : 600,
