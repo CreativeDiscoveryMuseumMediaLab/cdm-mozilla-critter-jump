@@ -4,10 +4,26 @@ Critterer.CutScene = function(game){};
 Critterer.CutScene.prototype = {
 
   create: function() {
-    //Emporer Scorpion Video
-    //var Scorpions = $('<div>').html('<iframe src="https://vimeo.com/112414428"></iframe>');
+
+      $.fancybox({
+          //type          : 'iframe',
+          maxWidth	    : 800,
+          maxHeight	    : 600,
+          fitToView	    : true,
+          width		    : '70%',
+          height		: '70%',
+          autoSize	    : true,
+          closeClick	: false,
+          openEffect	: 'none',
+          closeEffect	: 'none',
+          href          : 'http://vimeo.com/99745068',
+          helpers       : {
+              media : {}
+          }
+      });
+
   },
 
   update: function() {}
 
-}; 
+};
