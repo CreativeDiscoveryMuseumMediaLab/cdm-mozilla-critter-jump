@@ -25,6 +25,11 @@ Critterer.MainMenu.prototype = {
             this.critterer_logo.anchor.setTo(0.5, 0.5);
             this.critterer_logo.alpha = 0;
 
+            var logo_tween = this.add.tween(this.critterer_logo);
+
+            // sprite_name.to({x: x, y: y}, duration, easing, autostart, delay);
+            logo_tween.to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 100);
+
         },
 
         /**
