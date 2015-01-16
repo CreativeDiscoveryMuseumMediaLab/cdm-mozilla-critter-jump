@@ -4,7 +4,7 @@ var Critterer = {};
  * preload Preloader assets, setup game stage and scale, start Preloader
  * @constructor
  */
-Critterer.Boot = function () {};
+Critterer.Boot = function (game) {};
 
 Critterer.Boot.prototype = {
 
