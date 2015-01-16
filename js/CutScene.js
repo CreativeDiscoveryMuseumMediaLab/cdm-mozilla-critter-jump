@@ -32,8 +32,3 @@ Critterer.CutScene.prototype = {
     	});
     }
 }; 
-
-
-	$(document).ready(function() {
-		$(".fancybox").fancybox();
-	});
