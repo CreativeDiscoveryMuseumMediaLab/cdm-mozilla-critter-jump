@@ -11,6 +11,7 @@ var Walking_Stick_Breathe = "https://vimeo.com/111256267"
 var Walking_Stick_do = "https://vimeo.com/111256266"
 var Walking_Sticks_live = "https://vimeo.com/111256265"
 
+//addes the randomizer
     function picker() {
         var values = [Scorpions,Walking_Stick,Walking_Stick_Breathe,Walking_Stick_do, Walking_Sticks_live],
             valueToUse = values[Math.floor(Math.random() * values.length)];
