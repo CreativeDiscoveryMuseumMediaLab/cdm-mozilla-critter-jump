@@ -14,6 +14,7 @@ Critterer.MainMenu.prototype = {
          */
         preload: function() {
             this.critterer_logo = null;
+            this.main_menu_play_btn = null;
         },
 
         /**
