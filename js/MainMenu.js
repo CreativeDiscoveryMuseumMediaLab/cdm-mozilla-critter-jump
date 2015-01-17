@@ -31,7 +31,8 @@ Critterer.MainMenu.prototype = {
             // sprite_name.to({x: x, y: y}, duration, easing, autostart, delay);
             logo_tween.to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 100);
 
-            this.main_menu_play_btn = this.add.sprite(this.world.centerX, this.world.centerY + 35, 'game_play_btn');
+
+            this.main_menu_play_btn = this.add.image(this.world.centerX, this.world.centerY + 35, 'game_play_btn');
             this.main_menu_play_btn.anchor.setTo(0.5, 0.5);
             this.main_menu_play_btn.alpha = 0;
 
