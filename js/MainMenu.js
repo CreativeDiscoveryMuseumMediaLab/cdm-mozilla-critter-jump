@@ -35,6 +35,8 @@ Critterer.MainMenu.prototype = {
             this.main_menu_play_btn = this.add.image(this.world.centerX, this.world.centerY + 35, 'game_play_btn');
             this.main_menu_play_btn.anchor.setTo(0.5, 0.5);
             this.main_menu_play_btn.alpha = 0;
+            this.main_menu_play_btn.inputEnabled = true;
+            this.main_menu_play_btn.events.onInputDown.addOnce(this.startGame, this);
 
             var play_tween = this.add.tween(this.main_menu_play_btn);
 
