@@ -45,6 +45,10 @@ Critterer.MainMenu.prototype = {
 
         },
 
+        startGame: function(pointer) {
+            this.state.start('Game');
+        },
+
         /**
          * Implements update()
          */
