@@ -2,7 +2,7 @@
 
 Pull requests are an excellent tool for fostering code review. If you're using Github for team projects, you should be using these extensively. A good practice is for someone else to merge your code into the mainline, ensuring 2 sets of eyeballs review each feature. This is simple to organise when working in pairs, but in larger teams you may need a system for determining who reviews what.
 
-# Sample workflow
+## Sample workflow
 
 Here's a sample workflow demonstrating the use of pull requests.
 
