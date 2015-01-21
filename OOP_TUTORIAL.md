@@ -40,9 +40,10 @@ We're creating a class called MAMMAL.Person from which we can churn out multiple
     var guy_fawkes = new MAMMAL.Person("Guy", 67, 174);
     
     // now, let's change an object parameter value
-    console.log(guy_fawkes);
+    console.log(guy_fawkes); // returns 174
+    
     guy_fawkes.weight = 170;
-    console.log(guy_fawkes);
+    console.log(guy_fawkes); // returns 170
     
     // use a Class method
     james.run(5);
