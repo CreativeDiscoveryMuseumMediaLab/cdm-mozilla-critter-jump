@@ -1,11 +1,15 @@
-# Object Oriented Programming Review
+# Object Oriented Programming Overview
 
 We're creating a class called MAMMAL.Person from which we can churn out multiple Person objects quite easily.
 
+```javascript
     // declare a class name
     var MAMMAL = MAMMAL || {};
     
-    // build the class constructor function
+    // Build a class constructor.
+    // A constructor is invoked to create objects from the class blueprint. 
+    // Constructor declarations look like method declarations—except that 
+    // they use the name of the class and have no return type. For example, Bicycle has one constructor:
     MAMMAL.Person = function (name, height, weight) {
     
       // declare each of the initial object parameters
@@ -13,7 +17,7 @@ We're creating a class called MAMMAL.Person from which we can churn out multiple
       this.height = height;
       this.weight = weight;
       
-      //we'll also start his miles off at 0
+      // we'll also start his miles off at 0
       this.miles = 0;
       
     }
@@ -31,17 +35,19 @@ We're creating a class called MAMMAL.Person from which we can churn out multiple
     }
     
     // let's create our first object based on the Person class.
+    // the constructor is used to establish the object.
     var james = new MAMMAL.Person("James", 66, 165);
     var guy_fawkes = new MAMMAL.Person("Guy", 67, 174);
     
-    // change a parameter value
+    // now, let's change an object parameter value
     console.log(guy_fawkes);
     guy_fawkes.weight = 170;
     console.log(guy_fawkes);
     
     // use a Class method
     james.run(5);
-    console.log(james); // 5
+    console.log(james); // returns 5
+    
     james.run(4);
-    console.log(james); // 9
-
+    console.log(james); // returns 9
+```
