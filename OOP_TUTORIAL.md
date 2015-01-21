@@ -20,11 +20,24 @@ We're creating a class called MAMMAL.Person from which we can churn out multiple
       // we'll also start his miles off at 0
       this.miles = 0;
       
-    }
+    } 
+    
+    
     
     // let's add some functionality to Person. just having an object 
     // with a list of parameters means nothing if you can't do anything with it.
-    // this is the same as creating a simple function, but this is known as an object method
+    // the following methods are the same as functions.
+    
+    
+    MAMMAL.Person.prototype.eat = function(lbs) {
+      
+      // add the number of pounds gained in a meal 
+      // to this person's weight parameter.
+      // note: "=" assigns a value, while "+=" adds to the current value
+      this.weight += lbs;
+      
+    }
+    
     MAMMAL.Person.prototype.run = function(miles) {
       
       // add the number of miles suplied to 
@@ -32,7 +45,17 @@ We're creating a class called MAMMAL.Person from which we can churn out multiple
       // note: "=" assigns a value, while "+=" adds to the current value
       this.miles += miles;
       
-    }
+      // let's do some funny math:
+      // if a person runs, they lose weight, right?
+      // so, let's make up a weight loss calculator
+      
+      // loss will be their current weight times 10% of the miles ran
+      lbs_lossed = this.weight * (miles * .10);
+      
+      // now, we calculate their weight subtracting the loss
+      this.weight -= lbs_lossed;
+      
+    } 
     
     // let's create our first object based on the Person class.
     // the constructor is used to establish the object.
@@ -51,4 +74,22 @@ We're creating a class called MAMMAL.Person from which we can churn out multiple
     
     james.run(4);
     console.log(james); // returns 9
+```
+
+The example above has two methods: `eat()` and `run()`. In our Phaser tutorial, we learned to create methods inside a single `prototype` object. Let's see what that looks like here:
+
+```javascript
+    MAMMAL.Person.prototype = {
+    
+        eat: function(lbs) {
+          this.weight += lbs;
+        }
+    
+        run: function(miles) {
+          this.miles += miles;
+          
+          lbs_lossed = this.weight * (miles * .10);
+          this.weight -= lbs_lossed;
+        } 
+    }
 ```
