@@ -47,7 +47,7 @@ We're creating a class called MAMMAL.Person from which we can churn out multiple
       
       // let's do some funny math:
       // if a person runs, they lose weight, right?
-      // so, let's make up a weight loss calculator
+      // so, let's make up a horribly inaccurate weight loss calculator
       
       // loss will be their current weight times 10% of the miles ran
       lbs_lossed = this.weight * (miles * .10);
