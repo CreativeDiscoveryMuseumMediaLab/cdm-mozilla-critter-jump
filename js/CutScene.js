@@ -29,7 +29,7 @@ Critterer.CutScene.prototype = {
     
 
    create: function() {
-
+        this.picker();
     
       $.fancybox({
               maxWidth	    : 800,
