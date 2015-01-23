@@ -1,8 +1,39 @@
+# To create a scene:
+
+1. Add a script reference in `index.html` pointing to your new file 
+(e.g. `<script type="text/javascript" src="js/CutScene.js"></script>`)
+2. Add the game state in `index.html` 
+(e.g. `game.state.add('CutScene', Critterer.CutScene);`)
+3. Add your new scene file 
+(e.g. create a new file in the `js` folder called `CutScene.js`)
+
+```
+// js/CutScene.js
+Critterer.CutScene = function(game){};
+
+Critterer.CutScene.prototype = {
+  create: function() {
+    // console.log("you are in the CutScene, dude");
+    // alert('you are in the CutScene, dude');
+  },
+  update: function() {}
+}; 
+```
+
+# To TEST your code:
+1. change the `game.state.start('Preloader');` at the bottom of `js/Boot.js` to your particular scene (e.g. `game.state.start('CutScene');`)
+2. uncomment the `alert('this is a test');` or `console.log('this is a test');` statement in the create method of the template provided above.
+
+> NOTE:
+> If you don't know how to view the javascript console, use alert() 
+> for the time being. then, later, google how to view the console in cloud9.
+
+
 # Use pull requests
 
 Pull requests are an excellent tool for fostering code review. If you're using Github for team projects, you should be using these extensively. A good practice is for someone else to merge your code into the mainline, ensuring 2 sets of eyeballs review each feature. This is simple to organise when working in pairs, but in larger teams you may need a system for determining who reviews what.
 
-# Sample workflow
+## Sample workflow
 
 Here's a sample workflow demonstrating the use of pull requests.
 
