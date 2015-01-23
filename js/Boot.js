@@ -41,6 +41,6 @@ Critterer.Boot.prototype = {
         this.input.addPointer();
         this.stage.backgroundColor = '#171642';
 
-        this.state.start('CutScene');
+        this.state.start('Preloader');
     }
 };
