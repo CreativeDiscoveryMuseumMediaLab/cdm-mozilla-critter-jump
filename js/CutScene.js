@@ -43,7 +43,7 @@ Critterer.CutScene.prototype = {
 
   create: function() {
 
-    alert('this is a test');
+    //alert('this is a test');
     
     picker (); 
     
