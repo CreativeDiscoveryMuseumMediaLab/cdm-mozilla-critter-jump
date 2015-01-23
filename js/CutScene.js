@@ -16,17 +16,11 @@ Critterer.CutScene.prototype = {
             this.Scorpions,
             this.Walking_Stick,
             this.Walking_Stick_Breathe,
-            this.Walking_Stick_do, 
+            this.Walking_Stick_do,
             this.Walking_Sticks_live],
             valueToUse = values[Math.floor(Math.random() * values.length)];
-         
-     }
-};
-
-  create: function() {
-
             
-      // fancybox normally opens via a click event
+                  // fancybox normally opens via a click event
       // here we are calling the fancybox on load
       $.fancybox({
           maxWidth	    : 800,
@@ -42,9 +36,19 @@ Critterer.CutScene.prototype = {
           helpers       : {
               media : {}
           }
-      });
-    }
+         });
+        }
 
+     };
+
+  create: function() {
+
+    alert('this is a test');
+    
+    picker (); 
+    
+  });
+    
   update: function() {
-      
+     
   }
