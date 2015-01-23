@@ -37,6 +37,10 @@ Critterer.Preloader.prototype = {
         // pre load assets for the rest of the game (e.g. Main Menu, Game, etc.)
         this.load.image('critterer_logo', 'img/critterer_logo.png');
         this.load.image('game_play_btn', 'img/hud/game-play.png');
+        this.critterer_logo = this.add.sprite(this.world.centerX, this.world.centerY - 75, 'critterer_logo');
+        this.critterer_logo.anchor.setTo(0.5, 0.5);
+
+        //this.load.image('game_play_btn', 'img/game-play.png');
     },
 
     /**
@@ -55,6 +59,6 @@ Critterer.Preloader.prototype = {
      */
     update: function () {
         this.ready = true;
-        this.state.start('MainMenu');
+        this.state.start('Level');
     }
 }
