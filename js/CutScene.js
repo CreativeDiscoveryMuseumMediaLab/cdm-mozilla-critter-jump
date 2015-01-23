@@ -20,7 +20,7 @@ Critterer.CutScene.prototype = {
             this.Walking_Sticks_live],
             valueToUse = values[Math.floor(Math.random() * values.length)];
             
-                  // fancybox normally opens via a click event
+        // fancybox normally opens via a click event
       // here we are calling the fancybox on load
       $.fancybox({
           maxWidth	    : 800,
