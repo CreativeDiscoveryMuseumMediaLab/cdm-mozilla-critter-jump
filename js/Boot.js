@@ -45,4 +45,4 @@ Critterer.Boot.prototype = {
 
         this.state.start('Preloader');
     }
-}
+};
