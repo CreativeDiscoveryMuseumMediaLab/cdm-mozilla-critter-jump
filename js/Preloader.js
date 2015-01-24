@@ -55,6 +55,6 @@ Critterer.Preloader.prototype = {
      */
     update: function () {
         this.ready = true;
-        this.state.start('CutScene');
+        this.state.start('MainMenu');
     }
 }
