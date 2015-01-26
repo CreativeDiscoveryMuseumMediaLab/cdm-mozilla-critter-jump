@@ -39,8 +39,6 @@ Critterer.Preloader.prototype = {
         this.load.image('game_play_btn', 'img/hud/game-play.png');
         this.critterer_logo = this.add.sprite(this.world.centerX, this.world.centerY - 75, 'critterer_logo');
         this.critterer_logo.anchor.setTo(0.5, 0.5);
-
-        //this.load.image('game_play_btn', 'img/game-play.png');
     },
 
     /**
