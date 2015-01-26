@@ -23,38 +23,29 @@ Critterer.Level.prototype = {
     
   create: function() {
       
+    //These are green circles that represent what will be bugs  
     var bmd = this.add.bitmapData(100,100);
 	bmd.ctx.fillStyle = '#00ff00';
 	bmd.ctx.arc(50,50,50, 0, Math.PI * 2);
 	bmd.ctx.fill();
 	this.cache.addBitmapData('good', bmd);
-
-	var bmd = this.add.bitmapData(64,64);
-	bmd.ctx.fillStyle = '#ff0000';
-	bmd.ctx.arc(32,32,32, 0, Math.PI * 2);
-	bmd.ctx.fill();
-	this.cache.addBitmapData('bad', bmd);
     
-      
+    //Makes the gravity system 
     this.physics.startSystem(Phaser.Physics.ARCADE);
 	this.physics.arcade.gravity.y = 300;
 
 	good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
-	bad_objects = this.createGroup(4, this.cache.getBitmapData('bad'));
 
 	slashes = this.add.graphics(0, 0);
 
+    //Puts the label at the top of the screen
 	scoreLabel = this.add.text(10,10,'Tip: get the green ones!');
 	scoreLabel.fill = 'white';
-
-	//emitter = this.add.emitter(0, 0, 300);
-	//emitter.makeParticles('ball');
-	//emitter.gravity = 300;
-	//emitter.setYSpeed(-400,400);
 
 	this.throwObject();
   },
     
+  //Used for making a group of sprites (In our case, bugs)
   createGroup: function(numItems, sprite) {
 	var group = this.add.group();
 	group.enableBody = true;
@@ -65,21 +56,17 @@ Critterer.Level.prototype = {
 	return group;
 },
 
+  //The the timer for launching bugs
   throwObject: function() {
-      console.log(this.nextFire);
-      //console.log('Can you even get here?');
-	if (this.time.now > this.nextFire && good_objects.countDead()>0 && bad_objects.countDead()>0) {
+	if (this.time.now > this.nextFire && good_objects.countDead()>0) {
 		this.nextFire = this.time.now + this.fireRate;
         
 		this.throwGoodObject();
-		//if (Math.random()>.5) {
-			//this.throwBadObject();
-		//}
 	}
 },
 
+//The bug launcher
 throwGoodObject: function() {
-    console.log('Are you even trying?');
 	var obj = good_objects.getFirstDead();
 	obj.reset(this.world.centerX + Math.random()*100-Math.random()*100, 600);
 	obj.anchor.setTo(0.5, 0.5);
@@ -87,17 +74,10 @@ throwGoodObject: function() {
 	this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
 },
 
-/*throwBadObject: function() {
-	var obj = bad_objects.getFirstDead();
-	obj.reset(this.world.centerX + Math.random()*100-Math.random()*100, 600);
-	obj.anchor.setTo(0.5, 0.5);
-	//obj.body.angularAcceleration = 100;
-	this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
-},*/
-
   update: function() {
     this.throwObject();
       
+      //This holds points for touchscreen movement
       var points = [];
 
 	points.push({
@@ -105,12 +85,12 @@ throwGoodObject: function() {
 		y: this.input.y
 	});
 	points = points.splice(points.length-10, points.length);
-	//this.add.sprite(this.input.x, this.input.y, 'hit');
 
 	if (points.length<1 || points[0].x==0) {
 		return;
 	}
 
+    //For animation fall ing your movement on the touchscreen. Currently does not seem to be working
 	slashes.clear();
 	slashes.beginFill(0xFFFFFF);
 	slashes.alpha = .5;
@@ -120,6 +100,7 @@ throwGoodObject: function() {
 	} 
 	slashes.endFill();
 
+    //For handling collisions with an object
 	for(var i = 1; i< points.length; i++) {
 		line = new Phaser.Line(points[i].x, points[i].y, points[i-1].x, points[i-1].y);
 		this.debug.geom(line);
@@ -129,7 +110,7 @@ throwGoodObject: function() {
 	}
   },
 
-
+//Validates a target hit
 checkIntersects: function(fruit, callback) {
 	var l1 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom - fruit.height, fruit.body.right, fruit.body.bottom);
 	var l2 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom, fruit.body.right, fruit.body.bottom-fruit.height);
@@ -154,6 +135,7 @@ checkIntersects: function(fruit, callback) {
 
 },
 
+//Handles resetting the high score (and thus, the game)
 resetScore: function() {
 	var highscore = Math.max(score, localStorage.getItem("highscore"));
 	localStorage.setItem("highscore", highscore);
@@ -163,7 +145,6 @@ resetScore: function() {
 
 	score = 0;
 	scoreLabel.text = 'Game Over!\nHigh Score: '+highscore;
-	// Retrieve
 }
 
 }; 
