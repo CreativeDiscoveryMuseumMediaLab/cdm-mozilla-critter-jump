@@ -149,6 +149,14 @@ resetScore: function() {
 
 	score = 0;
 	scoreLabel.text = 'Game Over!\nHigh Score: '+highscore;
+},
+    
+    killFruit: function(fruit) {
+
+	   fruit.kill();
+	   points = [];
+	   this.score++;
+	   scoreLabel.text = 'Score: ' + this.score;
 }
 
 }; 
