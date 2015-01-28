@@ -105,20 +105,20 @@ throwGoodObject: function() {
 		line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i-1].x, this.points[i-1].y);
 		//this.debug.geom(line);
 
-		good_objects.forEachExists(this.checkIntersects);
+		good_objects.forEachExists(this.checkIntersects, this);
 		//bad_objects.forEachExists(checkIntersects);
 	}
   },
 
 //Validates a target hit
-checkIntersects: function(fruit, game) {
+checkIntersects: function(fruit, callback) {
 	var l1 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom - fruit.height, fruit.body.right, fruit.body.bottom);
 	var l2 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom, fruit.body.right, fruit.body.bottom-fruit.height);
 	l2.angle = 90;
     
     contactPoint = new Phaser.Point(0, 0);
     
-    //console.log(this.input.x);
+    console.log(this.input.x);
 
 	if(Phaser.Line.intersects(line, l1, true) ||
 		 Phaser.Line.intersects(line, l2, true)) {
