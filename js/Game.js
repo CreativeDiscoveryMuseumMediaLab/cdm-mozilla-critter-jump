@@ -9,7 +9,7 @@ Critterer.Game = function(game){
         this.points = [];	
         this.fireRate = 1000;
         this.nextFire = 0;
-        this.contactPoint = new Phaser.Point(0,0);
+        
    
 };
 
@@ -78,15 +78,15 @@ throwGoodObject: function() {
     this.throwObject();
       
       //This holds points for touchscreen movement
-      var points = [];
+      //var points = [];
 
-	points.push({
+	this.points.push({
 		x: this.input.x,
 		y: this.input.y
 	});
-	points = points.splice(points.length-10, points.length);
+	this.points = this.points.splice(this.points.length-10, this.points.length);
 
-	if (points.length<1 || points[0].x==0) {
+	if (this.points.length<1 || this.points[0].x==0) {
 		return;
 	}
 
@@ -94,27 +94,31 @@ throwGoodObject: function() {
 	slashes.clear();
 	slashes.beginFill(0xFFFFFF);
 	slashes.alpha = .5;
-	slashes.moveTo(points[0].x, points[0].y);
-	for (var i=1; i<points.length; i++) {
-		slashes.lineTo(points[i].x, points[i].y);
+	slashes.moveTo(this.points[0].x, this.points[0].y);
+	for (var i=1; i<this.points.length; i++) {
+		slashes.lineTo(this.points[i].x, this.points[i].y);
 	} 
 	slashes.endFill();
 
     //For handling collisions with an object
-	for(var i = 1; i< points.length; i++) {
-		line = new Phaser.Line(points[i].x, points[i].y, points[i-1].x, points[i-1].y);
-		this.debug.geom(line);
+	for(var i = 1; i< this.points.length; i++) {
+		line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i-1].x, this.points[i-1].y);
+		//this.debug.geom(line);
 
-		good_objects.forEachExists(checkIntersects);
-		bad_objects.forEachExists(checkIntersects);
+		good_objects.forEachExists(this.checkIntersects);
+		//bad_objects.forEachExists(checkIntersects);
 	}
   },
 
 //Validates a target hit
-checkIntersects: function(fruit, callback) {
+checkIntersects: function(fruit, game) {
 	var l1 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom - fruit.height, fruit.body.right, fruit.body.bottom);
 	var l2 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom, fruit.body.right, fruit.body.bottom-fruit.height);
 	l2.angle = 90;
+    
+    contactPoint = new Phaser.Point(0, 0);
+    
+    //console.log(this.input.x);
 
 	if(Phaser.Line.intersects(line, l1, true) ||
 		 Phaser.Line.intersects(line, l2, true)) {
