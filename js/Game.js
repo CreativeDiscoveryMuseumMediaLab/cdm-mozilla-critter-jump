@@ -41,8 +41,10 @@ Critterer.Game.prototype = {
     //Puts the label at the top of the screen
 	scoreLabel = this.add.text(10,10,'Tip: get the green ones!');
 	scoreLabel.fill = 'white';
+      
+    var launchX = Math.random() * 4;
 
-	this.throwObject();
+	this.throwObject(launchX);
   },
     
   //Used for making a group of sprites (In our case, bugs)
@@ -57,24 +59,31 @@ Critterer.Game.prototype = {
 },
 
   //The the timer for launching bugs
-  throwObject: function() {
+  throwObject: function(launchX) {
 	if (this.time.now > this.nextFire && good_objects.countDead()>0) {
 		this.nextFire = this.time.now + this.fireRate;
         
-		this.throwGoodObject();
+		this.throwGoodObject(launchX);
 	}
 },
 
 //The bug launcher
-throwGoodObject: function() {
+throwGoodObject: function(launchX) {
 	var obj = good_objects.getFirstDead();
 	obj.reset(this.world.centerX + Math.random()*100-Math.random()*100, 600);
-	obj.anchor.setTo(0.5, 0.5);
+	obj.anchor.setTo(launchX, 0.5);
 	//obj.body.angularAcceleration = 100;
 	this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
 },
 
   update: function() {
+    
+    
+
+var num = Math.floor(Math.random()*99) + 1; // this will get a number between 1 and 99;
+num *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+
+
     this.throwObject();
       
       //This holds points for touchscreen movement
@@ -106,7 +115,6 @@ throwGoodObject: function() {
 		//this.debug.geom(line);
 
 		good_objects.forEachExists(this.checkIntersects, this);
-		//bad_objects.forEachExists(checkIntersects);
 	}
   },
 
