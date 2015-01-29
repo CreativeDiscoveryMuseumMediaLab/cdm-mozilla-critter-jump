@@ -1,15 +1,23 @@
-// js/Game.js
+/**
+ * Game logic
+ * @param game
+ * @constructor
+ * @todo refactor initial game settings into constructor, and level handler (e.g. gravity, fireRate, etc)
+ */
 Critterer.Game = function (game) {
-    this.good_objects,
-        this.bad_objects,
-        this.slashes,
-        this.line,
-        this.scoreLabel;
-    this.score = 0;
+
+    // establish class wide scope variables
+    this.good_objects;
+    this.bad_objects;
+    this.slashes;
+    this.line;
+    this.scoreLabel;
     this.points = [];
+
+    // initial game settings
+    this.score = 0;
     this.fireRate = 1000;
     this.nextFire = 0;
-
 
 };
 
@@ -17,7 +25,6 @@ Critterer.Game.prototype = {
 
 
     preload: function () {
-
 
     },
 
@@ -67,7 +74,7 @@ Critterer.Game.prototype = {
         }
     },
 
-//The bug launcher
+    //The bug launcher
     throwGoodObject: function (launchX) {
         var obj = good_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random() * 100 - Math.random() * 100, 600);
@@ -78,10 +85,8 @@ Critterer.Game.prototype = {
 
     update: function () {
 
-
         var num = Math.floor(Math.random() * 99) + 1; // this will get a number between 1 and 99;
         num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-
 
         this.throwObject();
 
@@ -99,6 +104,7 @@ Critterer.Game.prototype = {
         }
 
         //For animation fall ing your movement on the touchscreen. Currently does not seem to be working
+        // @todo is this working?
         slashes.clear();
         slashes.beginFill(0xFFFFFF);
         slashes.alpha = .5;
@@ -117,7 +123,10 @@ Critterer.Game.prototype = {
         }
     },
 
-//Validates a target hit
+    // Validates a target hit
+    // note: that it currently detects intersection of the mouse with the full
+    // width and height of the object, so circles have a square shaped intersection
+    // @todo find way to detect intersect with oddly shaped objects
     checkIntersects: function (fruit, callback) {
         var l1 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom - fruit.height, fruit.body.right, fruit.body.bottom);
         var l2 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom, fruit.body.right, fruit.body.bottom - fruit.height);
@@ -146,7 +155,7 @@ Critterer.Game.prototype = {
 
     },
 
-//Handles resetting the high score (and thus, the game)
+    //Handles resetting the high score (and thus, the game)
     resetScore: function () {
         var highscore = Math.max(score, localStorage.getItem("highscore"));
         localStorage.setItem("highscore", highscore);
@@ -158,8 +167,8 @@ Critterer.Game.prototype = {
         scoreLabel.text = 'Game Over!\nHigh Score: ' + highscore;
     },
 
+    // @todo animate objects toward a backpack (shrink, spin, fade-out)
     killFruit: function (fruit) {
-
         fruit.kill();
         points = [];
         this.score++;
