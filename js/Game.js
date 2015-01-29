@@ -1,150 +1,178 @@
-// js/Game.js
-Critterer.Game = function(game){
-   this.good_objects,
-		this.bad_objects,
-		this.slashes,
-		this.line,
-		this.scoreLabel;
-		this.score = 0;
-        this.points = [];	
-        this.fireRate = 1000;
-        this.nextFire = 0;
-        this.contactPoint = new Phaser.Point(0,0);
-   
+/**
+ * Game logic
+ * @param game
+ * @constructor
+ * @todo refactor initial game settings into constructor, and level handler (e.g. gravity, fireRate, etc)
+ */
+Critterer.Game = function (game) {
+
+    // establish class wide scope variables
+    this.good_objects;
+    this.bad_objects;
+    this.slashes;
+    this.line;
+    this.scoreLabel;
+    this.points = [];
+
+    // initial game settings
+    this.score = 0;
+    this.fireRate = 1000;
+    this.nextFire = 0;
+
 };
 
 Critterer.Game.prototype = {
-    
-    
-  preload: function() {
-       
-    
-  },
-    
-  create: function() {
-      
-    //These are green circles that represent what will be bugs  
-    var bmd = this.add.bitmapData(100,100);
-	bmd.ctx.fillStyle = '#00ff00';
-	bmd.ctx.arc(50,50,50, 0, Math.PI * 2);
-	bmd.ctx.fill();
-	this.cache.addBitmapData('good', bmd);
-    
-    //Makes the gravity system 
-    this.physics.startSystem(Phaser.Physics.ARCADE);
-	this.physics.arcade.gravity.y = 300;
 
-	good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
 
-	slashes = this.add.graphics(0, 0);
+    preload: function () {
 
-    //Puts the label at the top of the screen
-	scoreLabel = this.add.text(10,10,'Tip: get the green ones!');
-	scoreLabel.fill = 'white';
+    },
 
-	this.throwObject();
-  },
-    
-  //Used for making a group of sprites (In our case, bugs)
-  createGroup: function(numItems, sprite) {
-	var group = this.add.group();
-	group.enableBody = true;
-	group.physicsBodyType = Phaser.Physics.ARCADE;
-	group.createMultiple(numItems, sprite);
-	group.setAll('checkWorldBounds', true);
-	group.setAll('outOfBoundsKill', true);
-	return group;
-},
+    create: function () {
 
-  //The the timer for launching bugs
-  throwObject: function() {
-	if (this.time.now > this.nextFire && good_objects.countDead()>0) {
-		this.nextFire = this.time.now + this.fireRate;
-        
-		this.throwGoodObject();
-	}
-},
+        //These are green circles that represent what will be bugs
+        var bmd = this.add.bitmapData(100, 100);
+        bmd.ctx.fillStyle = '#00ff00';
+        bmd.ctx.arc(50, 50, 50, 0, Math.PI * 2);
+        bmd.ctx.fill();
+        this.cache.addBitmapData('good', bmd);
 
-//The bug launcher
-throwGoodObject: function() {
-	var obj = good_objects.getFirstDead();
-	obj.reset(this.world.centerX + Math.random()*100-Math.random()*100, 600);
-	obj.anchor.setTo(0.5, 0.5);
-	//obj.body.angularAcceleration = 100;
-	this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
-},
+        //Makes the gravity system
+        this.physics.startSystem(Phaser.Physics.ARCADE);
+        this.physics.arcade.gravity.y = 300;
 
-  update: function() {
-    this.throwObject();
-      
-      //This holds points for touchscreen movement
-      var points = [];
+        good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
 
-	points.push({
-		x: this.input.x,
-		y: this.input.y
-	});
-	points = points.splice(points.length-10, points.length);
+        slashes = this.add.graphics(0, 0);
 
-	if (points.length<1 || points[0].x==0) {
-		return;
-	}
+        //Puts the label at the top of the screen
+        scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
+        scoreLabel.fill = 'white';
 
-    //For animation fall ing your movement on the touchscreen. Currently does not seem to be working
-	slashes.clear();
-	slashes.beginFill(0xFFFFFF);
-	slashes.alpha = .5;
-	slashes.moveTo(points[0].x, points[0].y);
-	for (var i=1; i<points.length; i++) {
-		slashes.lineTo(points[i].x, points[i].y);
-	} 
-	slashes.endFill();
+        var launchX = Math.random() * 4;
 
-    //For handling collisions with an object
-	for(var i = 1; i< points.length; i++) {
-		line = new Phaser.Line(points[i].x, points[i].y, points[i-1].x, points[i-1].y);
-		this.debug.geom(line);
+        this.throwObject(launchX);
+    },
 
-		good_objects.forEachExists(checkIntersects);
-		bad_objects.forEachExists(checkIntersects);
-	}
-  },
+    //Used for making a group of sprites (In our case, bugs)
+    createGroup: function (numItems, sprite) {
+        var group = this.add.group();
+        group.enableBody = true;
+        group.physicsBodyType = Phaser.Physics.ARCADE;
+        group.createMultiple(numItems, sprite);
+        group.setAll('checkWorldBounds', true);
+        group.setAll('outOfBoundsKill', true);
+        return group;
+    },
 
-//Validates a target hit
-checkIntersects: function(fruit, callback) {
-	var l1 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom - fruit.height, fruit.body.right, fruit.body.bottom);
-	var l2 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom, fruit.body.right, fruit.body.bottom-fruit.height);
-	l2.angle = 90;
+    //The the timer for launching bugs
+    throwObject: function (launchX) {
+        if (this.time.now > this.nextFire && good_objects.countDead() > 0) {
+            this.nextFire = this.time.now + this.fireRate;
 
-	if(Phaser.Line.intersects(line, l1, true) ||
-		 Phaser.Line.intersects(line, l2, true)) {
+            this.throwGoodObject(launchX);
+        }
+    },
 
-		contactPoint.x = this.input.x;
-		contactPoint.y = this.input.y;
-		var distance = Phaser.Point.distance(contactPoint, new Phaser.Point(fruit.x, fruit.y));
-		if (Phaser.Point.distance(contactPoint, new Phaser.Point(fruit.x, fruit.y)) > 110) {
-			return;
-		}
+    //The bug launcher
+    throwGoodObject: function (launchX) {
+        var obj = good_objects.getFirstDead();
+        obj.reset(this.world.centerX + Math.random() * 100 - Math.random() * 100, 600);
+        obj.anchor.setTo(launchX, 0.5);
+        //obj.body.angularAcceleration = 100;
+        this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
+    },
 
-		if (fruit.parent == good_objects) {
-			this.killFruit(fruit);
-		} else {
-			this.resetScore();	
-		}
-	}
+    update: function () {
 
-},
+        var num = Math.floor(Math.random() * 99) + 1; // this will get a number between 1 and 99;
+        num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
-//Handles resetting the high score (and thus, the game)
-resetScore: function() {
-	var highscore = Math.max(score, localStorage.getItem("highscore"));
-	localStorage.setItem("highscore", highscore);
+        this.throwObject();
 
-	good_objects.forEachExists(killFruit);
-	bad_objects.forEachExists(killFruit);
+        //This holds points for touchscreen movement
+        //var points = [];
 
-	score = 0;
-	scoreLabel.text = 'Game Over!\nHigh Score: '+highscore;
-}
+        this.points.push({
+            x: this.input.x,
+            y: this.input.y
+        });
+        this.points = this.points.splice(this.points.length - 10, this.points.length);
+
+        if (this.points.length < 1 || this.points[0].x == 0) {
+            return;
+        }
+
+        //For animation fall ing your movement on the touchscreen. Currently does not seem to be working
+        // @todo is this working?
+        slashes.clear();
+        slashes.beginFill(0xFFFFFF);
+        slashes.alpha = .5;
+        slashes.moveTo(this.points[0].x, this.points[0].y);
+        for (var i = 1; i < this.points.length; i++) {
+            slashes.lineTo(this.points[i].x, this.points[i].y);
+        }
+        slashes.endFill();
+
+        //For handling collisions with an object
+        for (var i = 1; i < this.points.length; i++) {
+            line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i - 1].x, this.points[i - 1].y);
+            //this.debug.geom(line);
+
+            good_objects.forEachExists(this.checkIntersects, this);
+        }
+    },
+
+    // Validates a target hit
+    // note: that it currently detects intersection of the mouse with the full
+    // width and height of the object, so circles have a square shaped intersection
+    // @todo find way to detect intersect with oddly shaped objects
+    checkIntersects: function (fruit, callback) {
+        var l1 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom - fruit.height, fruit.body.right, fruit.body.bottom);
+        var l2 = new Phaser.Line(fruit.body.right - fruit.width, fruit.body.bottom, fruit.body.right, fruit.body.bottom - fruit.height);
+        l2.angle = 90;
+
+        contactPoint = new Phaser.Point(0, 0);
+
+        console.log(this.input.x);
+
+        if (Phaser.Line.intersects(line, l1, true) ||
+            Phaser.Line.intersects(line, l2, true)) {
+
+            contactPoint.x = this.input.x;
+            contactPoint.y = this.input.y;
+            var distance = Phaser.Point.distance(contactPoint, new Phaser.Point(fruit.x, fruit.y));
+            if (Phaser.Point.distance(contactPoint, new Phaser.Point(fruit.x, fruit.y)) > 110) {
+                return;
+            }
+
+            if (fruit.parent == good_objects) {
+                this.killFruit(fruit);
+            } else {
+                this.resetScore();
+            }
+        }
+
+    },
+
+    //Handles resetting the high score (and thus, the game)
+    resetScore: function () {
+        var highscore = Math.max(score, localStorage.getItem("highscore"));
+        localStorage.setItem("highscore", highscore);
+
+        good_objects.forEachExists(killFruit);
+        bad_objects.forEachExists(killFruit);
+
+        score = 0;
+        scoreLabel.text = 'Game Over!\nHigh Score: ' + highscore;
+    },
+
+    // @todo animate objects toward a backpack (shrink, spin, fade-out)
+    killFruit: function (fruit) {
+        fruit.kill();
+        points = [];
+        this.score++;
+        scoreLabel.text = 'Score: ' + this.score;
+    }
 
 }; 
