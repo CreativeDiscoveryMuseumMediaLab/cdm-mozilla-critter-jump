@@ -50,9 +50,16 @@ Critterer.CutScene.prototype = {
    },
     
   update: function() {
-          if (this.videoend) {
-     this.state.start('Game');
-  }
-      
+
+     afterLoad: function (current, previous) {
+			var iframe = $(this.valuetouse)[0],
+					player = $f(iframe);
+			// When the player is ready, add listeners for pause, finish, and playProgress
+			player.addEvent('ready', function() {
+				player.addEvent('finish', function(id) {
+					$.fancybox.close();
+				});
+			});
+		} 
   }
 };
