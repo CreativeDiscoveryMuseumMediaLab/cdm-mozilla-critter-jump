@@ -36,12 +36,20 @@ Critterer.Game.prototype = {
         bmd.ctx.arc(50, 50, 50, 0, Math.PI * 2);
         bmd.ctx.fill();
         this.cache.addBitmapData('good', bmd);
+        
+        //These are the red circles that will be bad, sinister bugs that end our game
+        var bmd = this.add.bitmapData(64,64);
+	    bmd.ctx.fillStyle = '#ff0000';
+	    bmd.ctx.arc(32,32,32, 0, Math.PI * 2);
+	    bmd.ctx.fill();
+	    this.cache.addBitmapData('bad', bmd);
 
         //Makes the gravity system
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.physics.arcade.gravity.y = 300;
 
         good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
+        bad_objects = this.createGroup(4, this.cache.getBitmapData('bad'));
 
         slashes = this.add.graphics(0, 0);
 
@@ -67,11 +75,14 @@ Critterer.Game.prototype = {
 
     //The the timer for launching bugs
     throwObject: function (launchX) {
-        if (this.time.now > this.nextFire && good_objects.countDead() > 0) {
+        if (this.time.now > this.nextFire && good_objects.countDead() > 0 && bad_objects.countDead()>0) {
             this.nextFire = this.time.now + this.fireRate;
-
             this.throwGoodObject(launchX);
+            if (Math.random()>.5) {
+                this.throwBadObject(launchX);
+            }
         }
+        
     },
 
     //The bug launcher
@@ -82,6 +93,14 @@ Critterer.Game.prototype = {
         //obj.body.angularAcceleration = 100;
         this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
     },
+    
+    throwBadObject: function(launchX) {
+	    var obj = bad_objects.getFirstDead();
+        obj.reset(this.world.centerX + Math.random()*100 - Math.random()*100, 600);
+	    obj.anchor.setTo(launchX, 0.5);
+	    //obj.body.angularAcceleration = 100;
+	    this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
+},
 
     update: function () {
 
@@ -118,6 +137,7 @@ Critterer.Game.prototype = {
             line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i - 1].x, this.points[i - 1].y);
 
             good_objects.forEachExists(this.checkIntersects, this);
+            bad_objects.forEachExists(this.checkIntersects, this);
         }
     },
 
@@ -155,13 +175,13 @@ Critterer.Game.prototype = {
 
     //Handles resetting the high score (and thus, the game)
     resetScore: function () {
-        var highscore = Math.max(score, localStorage.getItem("highscore"));
+        var highscore = Math.max(this.score, localStorage.getItem("highscore"));
         localStorage.setItem("highscore", highscore);
 
-        good_objects.forEachExists(killFruit);
-        bad_objects.forEachExists(killFruit);
+        good_objects.forEachExists(this.killFruit);
+        bad_objects.forEachExists(this.killFruit);
 
-        score = 0;
+        this.score = 0;
         scoreLabel.text = 'Game Over!\nHigh Score: ' + highscore;
     },
 
