@@ -51,7 +51,7 @@ Critterer.CutScene.prototype = {
     
   update: function() {
           if (this.videoend) {
-     this.state.start('MainMenu');
+     this.state.start('Game');
   }
       
   }
