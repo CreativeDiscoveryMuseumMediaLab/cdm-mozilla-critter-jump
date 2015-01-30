@@ -46,7 +46,7 @@ Critterer.MainMenu.prototype = {
         },
 
         startGame: function(pointer) {
-            this.state.start('Game');
+            this.state.start('CutScene');
         },
 
         /**
