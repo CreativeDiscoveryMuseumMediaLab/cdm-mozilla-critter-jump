@@ -103,8 +103,7 @@ Critterer.Game.prototype = {
             return;
         }
 
-        //For animation fall ing your movement on the touchscreen. Currently does not seem to be working
-        // @todo is this working?
+        //For animation following you movement on the touchscreen.
         slashes.clear();
         slashes.beginFill(0xFFFFFF);
         slashes.alpha = .5;
@@ -117,7 +116,6 @@ Critterer.Game.prototype = {
         //For handling collisions with an object
         for (var i = 1; i < this.points.length; i++) {
             line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i - 1].x, this.points[i - 1].y);
-            //this.debug.geom(line);
 
             good_objects.forEachExists(this.checkIntersects, this);
         }
@@ -173,6 +171,10 @@ Critterer.Game.prototype = {
         points = [];
         this.score++;
         scoreLabel.text = 'Score: ' + this.score;
+        
+        if(this.score == 20) {
+            this.state.start('CutScene');
+        }
     }
 
 }; 
