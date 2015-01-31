@@ -7,6 +7,7 @@ Critterer.CutScene = function(game){
      this.Walking_Stick_do = "https://vimeo.com/111256266";
      this.Walking_Sticks_live = "https://vimeo.com/111256265";
      this.valueToUse;
+     this.videoend;
 };
     
 
@@ -49,7 +50,9 @@ Critterer.CutScene.prototype = {
    },
     
   update: function() {
-     
+          if (this.videoend) {
+     this.state.start('Game');
   }
-  
+      
+  }
 };
