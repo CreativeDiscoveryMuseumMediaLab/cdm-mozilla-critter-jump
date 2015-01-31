@@ -14,8 +14,12 @@
   <script type="text/javascript" src="js/MainMenu.js"></script>
   <script type="text/javascript" src="js/Game.js"></script>
   <script type="text/javascript" src="js/CutScene.js"></script>
+<<<<<<< HEAD
 
 
+=======
+  <script type="text/javascript" src="js/GameOver.js"></script>
+>>>>>>> 1a4e1e4b699486ec09aac384509834c401b7da63
 </head>
 <body>
   <div id="game_container"></div>
@@ -30,7 +34,8 @@
       game.state.add('MainMenu', Critterer.MainMenu);
       game.state.add('Game', Critterer.Game);
       game.state.add('CutScene', Critterer.CutScene);
-
+      game.state.add('GameOver', Critterer.CutScene);
+      
       // initiate game at Boot state
       game.state.start('Boot');
     }
