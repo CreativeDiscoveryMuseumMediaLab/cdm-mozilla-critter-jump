@@ -7,7 +7,6 @@ Critterer.CutScene = function(game){
       this.Walking_Stick_do = "https://vimeo.com/111256266";
       this.Walking_Sticks_live = "https://vimeo.com/111256265";
       this.valueToUse;
-      this.iframe;
 };
     
 
@@ -47,20 +46,6 @@ Critterer.CutScene = function(game){
                   media : {}
               },
               
-              
-              
-                     this.iframe = $(this.valuetouse)[0],
-                        this.player = $(this.iframe);
-                        // When the player is ready, add listeners for pause, finish, and playProgress
-                        this.player.addEvent('ready', function() {
-                            console.log("ok")
-                            thisplayer.addEvent('finish', function(id) {
-                                $.fancybox.close();
-                        });
-                    });
-		
-		
-
     });
   },
     
