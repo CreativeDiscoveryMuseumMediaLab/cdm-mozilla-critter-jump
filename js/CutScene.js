@@ -7,7 +7,7 @@ Critterer.CutScene = function(game){
       this.Walking_Stick_do = "https://vimeo.com/111256266";
       this.Walking_Sticks_live = "https://vimeo.com/111256265";
       this.valueToUse;
-      this.videoend;
+      this.iframe;
 };
     
 
@@ -32,33 +32,40 @@ Critterer.CutScene = function(game){
    create: function() {
          this.picker();
     
-       $.fancybox({
-               maxWidth	    : 800,
-               maxHeight	    : 600,
-               fitToView	    : true,
-               width		    : '70%',
-               height		: '70%',
-               autoSize	    : true,
-               closeClick	: false,
-               openEffect	: 'none',
-               closeEffect	: 'none',
-               href          : this.valueToUse,
-               helpers       : {
-                   media : {}
-               }
-             afterload: function (current, previous) {
-// 			var iframe = $(this.valuetouse)[0],
-// 					player = $f(iframe);
-// 			// When the player is ready, add listeners for pause, finish, and playProgress
-// 			player.addEvent('ready', function() {
-// 				player.addEvent('finish', function(id) {
-// 					$.fancybox.close();
-// 				});
-// 			});
-// 		}
-      });    
-   },
-    
-//   update: function() {
+      $.fancybox({
+              maxWidth	    : 800,
+              maxHeight	    : 600,
+              fitToView	    : true,
+              width		    : '70%',
+              height		: '70%',
+              autoSize	    : true,
+              closeClick	: false,
+              openEffect	: 'none',
+              closeEffect	: 'none',
+              href          : this.valueToUse,
+              helpers       : {
+                  media : {}
+              },
+              
+              
+              
+                     this.iframe = $(this.valuetouse)[0],
+                        this.player = $(this.iframe);
+                        // When the player is ready, add listeners for pause, finish, and playProgress
+                        this.player.addEvent('ready', function() {
+                            console.log("ok")
+                            thisplayer.addEvent('finish', function(id) {
+                                $.fancybox.close();
+                        });
+                    });
+		
+		
 
-// 		} 
+    });
+  },
+    
+  update: function() {
+
+		} 
+
+}
