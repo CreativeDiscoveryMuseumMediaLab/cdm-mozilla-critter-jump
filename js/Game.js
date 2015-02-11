@@ -67,6 +67,13 @@ Critterer.Game.prototype = {
         gameoverpopup = this.add.text(260, 265, 'Game Over! Please Try again!')
 
         gameoverpopup.fill = 'white';
+        
+        // Add a pause button
+	    this.btnPause = this.game.add.button(20, 20, 'btnPause', this.pauseGame, this);
+
+	    // Let's build a pause panel
+	    this.pausePanel = new PausePanel(this.game);
+	    this.game.add.existing(this.pausePanel);
     
         var launchX = Math.random() * 4;
 
