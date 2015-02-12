@@ -18,7 +18,7 @@ Critterer.Game = function (game) {
     this.score = 0;
     this.fireRate = 1000;
     this.nextFire = 0;
-
+    console.log("test");
 };
 
 Critterer.Game.prototype = {
@@ -183,6 +183,7 @@ Critterer.Game.prototype = {
 
         this.score = 0;
         scoreLabel.text = 'Game Over!\nHigh Score: ' + highscore;
+        this.state.start('GameOver')
     },
 
     // @todo animate objects toward a backpack (shrink, spin, fade-out)
