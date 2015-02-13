@@ -194,7 +194,7 @@ Critterer.Game.prototype = {
         scoreLabel.text = 'Score: ' + this.score;
         
         if(this.score == 20) {
-            this.state.start('GameOver');
+            this.state.start('MainMenu');
         }
     }
 
