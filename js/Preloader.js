@@ -8,7 +8,7 @@ Critterer.Preloader = function(game) {
     this.loader_lbl = null;
     this.game_play_btn = null;
     this.ready = false;
-}
+};
 
 Critterer.Preloader.prototype = {
 
