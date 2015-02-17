@@ -11,15 +11,14 @@ Critterer.Game = function (game) {
     this.bad_objects;
     this.slashes;
     this.line;
-    this.scorelabel; 
-    this.gameoverpopup;
+    this.scoreLabel;
     this.points = [];
 
     // initial game settings
     this.score = 0;
     this.fireRate = 1000;
     this.nextFire = 0;
-
+    console.log("test");
 };
 
 var PausePanel = function(game, parent){
@@ -90,17 +89,10 @@ Critterer.Game.prototype = {
         slashes = this.add.graphics(0, 0);
 
         //Puts the label at the top of the screen
-        scorelabel = this.add.text(10, 10, 'Tip: Do not hit the red ones!');
-        
-        
-        scorelabel.fill = 'white';
-        
-        if(this.score == 20) {
-            this.state.start('gameoverpopup');
-        }
-        
-        gameoverpopup = this.add.text(260, 265, 'Game Over! Please Try again!')
+        scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
+        scoreLabel.fill = 'white';
 
+<<<<<<< HEAD
         gameoverpopup.fill = 'white';
         
         // Add a pause button
@@ -110,6 +102,8 @@ Critterer.Game.prototype = {
 	    this.pausePanel = new PausePanel(this.game);
 	    this.game.add.existing(this.pausePanel);
     
+=======
+>>>>>>> master
         var launchX = Math.random() * 4;
 
         this.throwObject(launchX);
@@ -243,7 +237,8 @@ Critterer.Game.prototype = {
         bad_objects.forEachExists(this.killFruit);
 
         this.score = 0;
-        gameoverpopup.text = 'Game Over Better Luck Next Time!\nHigh Score: ' + highscore;
+        // scoreLabel.text = 'Game Over!\nHigh Score: ' + highscore;
+        // this.state.start('GameOver')
     },
 
     // @todo animate objects toward a backpack (shrink, spin, fade-out)
@@ -251,12 +246,12 @@ Critterer.Game.prototype = {
         fruit.kill();
         points = [];
         this.score++;
-        scorelabel.text = 'Score: ' + this.score;
+        scoreLabel.text = 'Score: ' + this.score;
         
-        if(this.score == 20) {
-            this.state.start('gameoverpopup');
+        if(this.score == 10) {
+            this.state.start('CutScene');
         }
-    
     }
 
 }; 
+
