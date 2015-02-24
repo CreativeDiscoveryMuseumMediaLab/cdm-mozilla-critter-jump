@@ -18,7 +18,6 @@ Critterer.Game = function (game) {
     this.score = 0;
     this.fireRate = 1000;
     this.nextFire = 0;
-    console.log("test");
 };
 
 var PausePanel = function(game, parent){
@@ -26,20 +25,19 @@ var PausePanel = function(game, parent){
 	Phaser.Group.call(this, game, parent);
 
 	// Add the panel
-	//this.panel = this.create(this.game.width/2, 10, 'panel');
-	//this.panel.anchor.setTo(0.5, 0);
+	this.panel = this.create(this.game.width/2, 10, 'panel');
+	this.panel.anchor.setTo(0.5, 0);
 
 	// Add text
-	//this.pauseText = this.game.add.bitmapText(100, 20, 'kenpixelblocks', 'Game paused', 24);
-	//this.add(this.pauseText);
-	//this.cloudsText = this.game.add.bitmapText(100, 50, 'kenpixelblocks', 'Clouds are still moving :)', 16);
-	//this.add(this.cloudsText);
+	this.pauseText = this.game.add.text(10, 10, 'We are paused!');
+	this.add(this.pauseText);
+
 
 	// Add play button
-	//this.btnPlay = this.game.add.button(20, 20, 'btnPlay', function(){
-		//this.game.state.getCurrentState().playGame()}
-	//, this);
-	//this.add(this.btnPlay);
+	this.btnPlay = this.game.add.button(20, 20, 'game_play_btn', function(){
+		this.game.state.getCurrentState().playGame()}
+	, this);
+	this.add(this.btnPlay);
 
 	// Place it out of bounds
 	this.x = 0;
