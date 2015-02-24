@@ -92,27 +92,28 @@ Critterer.Game.prototype = {
         scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
         scoreLabel.fill = 'white';
 
-<<<<<<< HEAD
-        gameoverpopup.fill = 'white';
+        //gameoverpopup.fill = 'white';
         
         // Add a pause button
 	    this.btnPause = this.game.add.button(20, 20, 'btnPause', this.pauseGame, this);
+        this.btnPause.inputEnabled = true;
+        this.btnPause.events.onInputDown.addOnce(this.pauseGame, this);
 
 	    // Let's build a pause panel
 	    this.pausePanel = new PausePanel(this.game);
 	    this.game.add.existing(this.pausePanel);
     
-=======
->>>>>>> master
         var launchX = Math.random() * 4;
 
         this.throwObject(launchX);
     },
     
     pauseGame: function(){
-	   if(!paused){
+        console.log("We're here!");
+	   if(!this.game.paused){
+           console.log("And we're trying to pause!");
 		  // Show panel
-		  paused = true;
+		  this.game.paused = true;
 		  this.pausePanel.show();
 	   }
     },
@@ -207,7 +208,6 @@ Critterer.Game.prototype = {
 
         contactPoint = new Phaser.Point(0, 0);
 
-        console.log(this.input.x);
 
         if (Phaser.Line.intersects(line, l1, true) ||
             Phaser.Line.intersects(line, l2, true)) {
