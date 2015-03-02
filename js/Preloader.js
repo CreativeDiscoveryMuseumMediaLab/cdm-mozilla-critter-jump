@@ -17,7 +17,8 @@ Critterer.Preloader.prototype = {
      * preload all remaining game assets
      */
     preload: function () {
-
+        
+        
         this.loader_lbl = this.add.text(
             this.world.centerX,
             this.world.centerY - 50,
@@ -27,6 +28,7 @@ Critterer.Preloader.prototype = {
                 fill: "#FFF",
                 align: "center"
             }
+            
         );
         this.loader_lbl.anchor.setTo(0.5,0.5);
 
@@ -37,6 +39,8 @@ Critterer.Preloader.prototype = {
         // pre load assets for the rest of the game (e.g. Main Menu, Game, etc.)
         this.load.image('critterer_logo', 'img/critterer_logo.png');
         this.load.image('game_play_btn', 'img/hud/game-play.png');
+        this.load.image('background', 'img/background.png');
+        this.load.image('stick_bug', 'img/temp_bug.png')
     },
 
     /**

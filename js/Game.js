@@ -24,12 +24,12 @@ Critterer.Game = function (game) {
 Critterer.Game.prototype = {
 
 
-    preload: function () {
+    preload: function() {
 
     },
 
     create: function () {
-
+        
         //These are green circles that represent what will be bugs
         var bmd = this.add.bitmapData(100, 100);
         bmd.ctx.fillStyle = '#00ff00';
@@ -47,12 +47,14 @@ Critterer.Game.prototype = {
         //Makes the gravity system
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.physics.arcade.gravity.y = 300;
-
         good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
         bad_objects = this.createGroup(4, this.cache.getBitmapData('bad'));
 
         slashes = this.add.graphics(0, 0);
-
+        
+        //adds backround
+        this.addBackGround();
+        
         //Puts the label at the top of the screen
         scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
         scoreLabel.fill = 'white';
@@ -60,8 +62,14 @@ Critterer.Game.prototype = {
         var launchX = Math.random() * 4;
 
         this.throwObject(launchX);
+       
+        
     },
-
+    
+    addBackGround: function() {
+        this.add.image(0, 0, 'background');
+    },
+    
     //Used for making a group of sprites (In our case, bugs)
     createGroup: function (numItems, sprite) {
         var group = this.add.group();
@@ -89,7 +97,7 @@ Critterer.Game.prototype = {
     throwGoodObject: function (launchX) {
         var obj = good_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random() * 100 - Math.random() * 100, 600);
-        obj.anchor.setTo(launchX, 0.5);
+        obj.anchor.setTo(launchX, .5);
         //obj.body.angularAcceleration = 100;
         this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
     },
