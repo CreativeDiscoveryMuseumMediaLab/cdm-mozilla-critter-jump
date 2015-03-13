@@ -53,7 +53,7 @@ PausePanel.prototype.show = function(){
 	this.game.add.tween(this).to({y:0}, 500, Phaser.Easing.Bounce.Out, true);
 };
 PausePanel.prototype.hide = function(){
-	this.game.add.tween(this).to({y:-100}, 200, Phaser.Easing.Linear.NONE, true);
+	this.game.add.tween(this).to({y:-200}, 200, Phaser.Easing.Linear.NONE, true);
 };
 
 Critterer.Game.prototype = {
@@ -124,11 +124,12 @@ Critterer.Game.prototype = {
 
     playGame: function() {
 	if(this.paused){
-	    this.paused = true;
+	    this.paused = false;
 	    this.pausePanel.hide();
 	}
 	this.physics.arcade.gravity.y = 300;
     },
+
     //Used for making a group of sprites (In our case, bugs)
     createGroup: function (numItems, sprite) {
         var group = this.add.group();
