@@ -38,6 +38,7 @@ Critterer.Preloader.prototype = {
         this.load.image('critterer_logo', 'img/critterer_logo.png');
         this.load.image('game_play_btn', 'img/hud/game-play.png');
         this.load.image('btnPause', 'img/hud/pause.png');
+	this.load.image('panel', 'img/hud/proto-pause-menu.png');
     },
 
     /**

@@ -18,6 +18,8 @@ Critterer.Game = function (game) {
     this.score = 0;
     this.fireRate = 1000;
     this.nextFire = 0;
+    this.paused = false;
+    this.last_paused = false;
 };
 
 var PausePanel = function(game, parent){
@@ -84,22 +86,23 @@ Critterer.Game.prototype = {
         good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
         bad_objects = this.createGroup(4, this.cache.getBitmapData('bad'));
 
-        slashes = this.add.graphics(0, 0);
+	slashes = this.add.graphics(0, 0);
 
         //Puts the label at the top of the screen
-        scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
-        scoreLabel.fill = 'white';
+	scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
+	scoreLabel.fill = 'white';
 
         //gameoverpopup.fill = 'white';
         
         // Add a pause button
-	    this.btnPause = this.game.add.button(20, 20, 'btnPause', this.pauseGame, this);
+	this.btnPause = this.game.add.button(20, 20, 'btnPause', this.pauseGame, this);
         this.btnPause.inputEnabled = true;
         this.btnPause.events.onInputDown.addOnce(this.pauseGame, this);
 
 	    // Let's build a pause panel
 	    this.pausePanel = new PausePanel(this.game);
 	    this.game.add.existing(this.pausePanel);
+	this.pausePanel.hide();
     
         var launchX = Math.random() * 4;
 
@@ -107,15 +110,25 @@ Critterer.Game.prototype = {
     },
     
     pauseGame: function(){
-        console.log("We're here!");
-	   if(!this.game.paused){
+	   if(!this.paused){
            console.log("And we're trying to pause!");
 		  // Show panel
-		  this.game.paused = true;
+		  this.paused = true;
 		  this.pausePanel.show();
+           
+          this.game.physics.arcade.gravity.x = 0;
+           this.game.physics.arcade.gravity.y = 0;
+           this.game.physics.arcade.gravity.z = 0;
 	   }
     },
 
+    playGame: function() {
+	if(this.paused){
+	    this.paused = true;
+	    this.pausePanel.hide();
+	}
+	this.physics.arcade.gravity.y = 300;
+    },
     //Used for making a group of sprites (In our case, bugs)
     createGroup: function (numItems, sprite) {
         var group = this.add.group();
@@ -157,11 +170,14 @@ Critterer.Game.prototype = {
 },
 
     update: function () {
+        
 
         var num = Math.floor(Math.random() * 99) + 1; // this will get a number between 1 and 99;
         num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
-        this.throwObject();
+        if(!this.paused) {
+            this.throwObject();
+        }
 
         //This holds points for touchscreen movement
         //var points = [];
@@ -187,12 +203,26 @@ Critterer.Game.prototype = {
         slashes.endFill();
 
         //For handling collisions with an object
-        for (var i = 1; i < this.points.length; i++) {
-            line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i - 1].x, this.points[i - 1].y);
+        if(!this.paused) {
+            for (var i = 1; i < this.points.length; i++) {
+                line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i - 1].x, this.points[i - 1].y);
 
-            good_objects.forEachExists(this.checkIntersects, this);
-            bad_objects.forEachExists(this.checkIntersects, this);
+                good_objects.forEachExists(this.checkIntersects, this);
+                bad_objects.forEachExists(this.checkIntersects, this);
+            }
         }
+        
+        if(this.paused) {
+            good_objects.forEachExists(this.holdFruit, this);
+            bad_objects.forEachExists(this.holdFruit, this);
+        }
+        
+        if(!this.paused && this.last_paused) {
+            good_objects.forEachExists(this.dropFruit, this);
+            bad_objects.forEachExists(this.dropFruit, this);
+        }
+        
+        this.last_paused = this.paused;
     },
 
     // Validates a target hit
@@ -224,6 +254,14 @@ Critterer.Game.prototype = {
             }
         }
 
+    },
+    
+    holdFruit: function(fruit, callback) {
+        fruit.paused = true;
+    },
+    
+    dropFruit: function(fruit, callback) {
+        fruit.paused = false;
     },
 
     //Handles resetting the high score (and thus, the game)
