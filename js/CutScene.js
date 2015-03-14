@@ -13,12 +13,14 @@ Critterer.CutScene = function(game){
 
     
  Critterer.CutScene.prototype = {
+   
+  timer: function() {
+   this.timer.add(3000);
+   this.timer.onEvent.add(alert("hello"), this),
+   this.timer.start();
+  },
   
-  // timer: function() {
-  // this.timer.add(3000);
-  // this.timer.onEvent.add(alert("hello"), this);
-  // this.timer.start();
-  // },
+  
      picker: function() {
          var values = [
              this.Scorpions,
@@ -35,7 +37,6 @@ Critterer.CutScene = function(game){
     
 
    create: function() {
-     console.log("")
       $.fancybox({
               maxWidth	    : 800,
               maxHeight	    : 600,
