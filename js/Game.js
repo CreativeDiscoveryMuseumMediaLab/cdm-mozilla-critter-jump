@@ -43,7 +43,7 @@ var PausePanel = function(game, parent){
 
 	// Place it out of bounds
 	this.x = 0;
-	this.y = -100;
+	this.y = -200;
 };
 
 PausePanel.prototype = Object.create(Phaser.Group.prototype);
