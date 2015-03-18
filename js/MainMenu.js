@@ -5,7 +5,7 @@
  */
 Critterer.MainMenu = function(game) {
 
-}
+};
 
 Critterer.MainMenu.prototype = {
 
@@ -46,7 +46,7 @@ Critterer.MainMenu.prototype = {
         },
 
         startGame: function(pointer) {
-            this.state.start('Game');
+            this.state.start('');
         },
 
         /**
@@ -56,4 +56,4 @@ Critterer.MainMenu.prototype = {
 
         }
 
-}
+};
