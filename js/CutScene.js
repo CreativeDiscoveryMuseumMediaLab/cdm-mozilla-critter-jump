@@ -54,7 +54,7 @@ Critterer.CutScene = function(game){
               
     });
 },
-
+ 
   update: function() {
 
 		} 
