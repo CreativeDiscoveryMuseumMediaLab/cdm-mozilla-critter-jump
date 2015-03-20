@@ -40,7 +40,7 @@ Critterer.Preloader.prototype = {
         this.load.image('critterer_logo', 'img/critterer_logo.png');
         this.load.image('game_play_btn', 'img/hud/game-play.png');
         this.load.image('background', 'img/background.png');
-        this.load.image('stick_bug', 'img/temp_bug.png')
+        this.load.spritesheet('stick_bug', 'img/temp_Bug.png');
     },
 
     /**

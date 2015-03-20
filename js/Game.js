@@ -47,7 +47,7 @@ Critterer.Game.prototype = {
         //Makes the gravity system
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.physics.arcade.gravity.y = 300;
-        good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
+        good_objects = this.createGroup(4, this.add.image(0,0,'stick_bug'));
         bad_objects = this.createGroup(4, this.cache.getBitmapData('bad'));
 
         slashes = this.add.graphics(0, 0);

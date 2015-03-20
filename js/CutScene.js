@@ -47,7 +47,7 @@ Critterer.CutScene.prototype = {
                   media : {}
               }
      });    
-   },
+   }
     
   update: function() {
           if (this.videoend) {
