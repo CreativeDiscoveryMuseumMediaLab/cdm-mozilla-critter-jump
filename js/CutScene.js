@@ -48,8 +48,7 @@ Critterer.CutScene.prototype = {
             href: this.valueToUse,
             helpers: {
                 media: {}
-            },
-
+            }
         });
     },
 
