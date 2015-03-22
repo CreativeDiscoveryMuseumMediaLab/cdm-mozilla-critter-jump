@@ -7,18 +7,10 @@ Critterer.CutScene = function (game) {
     this.Walking_Stick_do = "https://vimeo.com/111256266";
     this.Walking_Sticks_live = "https://vimeo.com/111256265";
     this.valueToUse;
-    this.timer = game.time.create(1000, false);
 };
 
 
 Critterer.CutScene.prototype = {
-
-    timer: function () {
-        this.timer.add(3000);
-        this.timer.onEvent.add(alert("hello"), this),
-            this.timer.start();
-    },
-
 
     picker: function () {
         var values = [
