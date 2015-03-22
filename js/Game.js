@@ -18,7 +18,6 @@ Critterer.Game = function (game) {
     this.score = 0;
     this.fireRate = 1000;
     this.nextFire = 0;
-    console.log("test");
 };
 
 Critterer.Game.prototype = {
@@ -151,8 +150,6 @@ Critterer.Game.prototype = {
         l2.angle = 90;
 
         contactPoint = new Phaser.Point(0, 0);
-
-        console.log(this.input.x);
 
         if (Phaser.Line.intersects(line, l1, true) ||
             Phaser.Line.intersects(line, l2, true)) {
