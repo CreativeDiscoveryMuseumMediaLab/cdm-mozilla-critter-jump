@@ -1,6 +1,5 @@
 //cut scene to play videos between game play
 Critterer.CutScene = function (game) {
-    console.log('test');
     this.Scorpions = "https://vimeo.com/112414428";
     this.Walking_Stick = "https://vimeo.com/111256268";
     this.Walking_Stick_Breathe = "https://vimeo.com/111256267";
@@ -28,7 +27,7 @@ Critterer.CutScene.prototype = {
 
     create: function () {
         this.picker();
-        
+
         $.fancybox({
             maxWidth: 800,
             maxHeight: 600,
