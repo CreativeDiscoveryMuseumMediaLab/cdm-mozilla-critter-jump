@@ -1,7 +1,7 @@
-Critterer.Game = function (game) {
+Critterer.GameOver = function (game) {
 };
 
-Critterer.Game.prototype = {
+Critterer.GameOver.prototype = {
 
 
     preload: function () {
