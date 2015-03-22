@@ -13,5 +13,5 @@ Critterer.Game.prototype = {
     },
     
     update: function () {
-    },
+    }
 }
