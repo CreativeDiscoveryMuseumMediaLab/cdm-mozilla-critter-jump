@@ -8,7 +8,6 @@ Critterer.Preloader = function(game) {
     this.loader_lbl = null;
     this.game_play_btn = null;
     this.ready = false;
-    console.log("test")
 };
 
 Critterer.Preloader.prototype = {
@@ -36,8 +35,12 @@ Critterer.Preloader.prototype = {
         this.load.setPreloadSprite(this.preload_bar);
 
         // pre load assets for the rest of the game (e.g. Main Menu, Game, etc.)
+        this.load.spritesheet('wasp', 'img/sprites/wasp.png', 175, 91, 1);
+        this.load.spritesheet('good', 'img/sprites/good.png', 100, 100, 1);
         this.load.image('critterer_logo', 'img/critterer_logo.png');
         this.load.image('game_play_btn', 'img/hud/game-play.png');
+        this.load.image('background', 'img/background.png'); 
+        
     },
 
     /**

@@ -7,13 +7,13 @@
 Critterer.Game = function (game) {
 
     // establish class wide scope variables
-    this.good_objects;
-    this.bad_objects;
+    //this.good_objects;
+    //this.bad_objects;
     this.slashes;
     this.line;
     this.scoreLabel;
     this.points = [];
-
+    
     // initial game settings
     this.score = 0;
     this.fireRate = 1000;
@@ -21,37 +21,27 @@ Critterer.Game = function (game) {
 };
 
 Critterer.Game.prototype = {
-
+    
 
     preload: function () {
 
     },
-
+    
     create: function () {
-
-        //These are green circles that represent what will be bugs
-        var bmd = this.add.bitmapData(100, 100);
-        bmd.ctx.fillStyle = '#00ff00';
-        bmd.ctx.arc(50, 50, 50, 0, Math.PI * 2);
-        bmd.ctx.fill();
-        this.cache.addBitmapData('good', bmd);
+        //add background before other objects
+        this.addBackground();
         
-        //These are the red circles that will be bad, sinister bugs that end our game
-        var bmd = this.add.bitmapData(64,64);
-	    bmd.ctx.fillStyle = '#ff0000';
-	    bmd.ctx.arc(32,32,32, 0, Math.PI * 2);
-	    bmd.ctx.fill();
-	    this.cache.addBitmapData('bad', bmd);
-
         //Makes the gravity system
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.physics.arcade.gravity.y = 300;
-
-        good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
-        bad_objects = this.createGroup(4, this.cache.getBitmapData('bad'));
-
+         
+        
+        //creating groups of bugs
+        good_objects = this.createGroup(4,'good');
+        bad_objects = this.createGroup(4, 'wasp');
+       
         slashes = this.add.graphics(0, 0);
-
+        
         //Puts the label at the top of the screen
         scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
         scoreLabel.fill = 'white';
@@ -59,19 +49,28 @@ Critterer.Game.prototype = {
         var launchX = Math.random() * 4;
 
         this.throwObject(launchX);
+       
     },
-
+    
+    //function to add background
+    addBackground: function(){
+    this.add.image(0,0, 'background');
+    },
+    
+    
+    
     //Used for making a group of sprites (In our case, bugs)
-    createGroup: function (numItems, sprite) {
+    createGroup: function (num, sprite) {
         var group = this.add.group();
         group.enableBody = true;
         group.physicsBodyType = Phaser.Physics.ARCADE;
-        group.createMultiple(numItems, sprite);
+        group.createMultiple(num, sprite);
         group.setAll('checkWorldBounds', true);
         group.setAll('outOfBoundsKill', true);
         return group;
+        
     },
-
+        
     //The the timer for launching bugs
     throwObject: function (launchX) {
         if (this.time.now > this.nextFire && good_objects.countDead() > 0 && bad_objects.countDead()>0) {
@@ -86,27 +85,30 @@ Critterer.Game.prototype = {
 
     //The bug launcher
     throwGoodObject: function (launchX) {
+         console.log('test');
         var obj = good_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random() * 100 - Math.random() * 100, 600);
         obj.anchor.setTo(launchX, 0.5);
-        //obj.body.angularAcceleration = 100;
+        obj.body.angularAcceleration = 100;
         this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
     },
     
     throwBadObject: function(launchX) {
-	    var obj = bad_objects.getFirstDead();
+         console.log('test');
+	   var obj = bad_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random()*100 - Math.random()*100, 600);
 	    obj.anchor.setTo(launchX, 0.5);
 	    //obj.body.angularAcceleration = 100;
 	    this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
-},
+    },
+    
 
     update: function () {
 
         var num = Math.floor(Math.random() * 99) + 1; // this will get a number between 1 and 99;
         num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
-        this.throwObject();
+       this.throwObject();
 
         //This holds points for touchscreen movement
         //var points = [];
@@ -194,5 +196,6 @@ Critterer.Game.prototype = {
             this.state.start('CutScene');
         }
     }
-
+    
+        
 }; 
