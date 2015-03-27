@@ -45,8 +45,6 @@ Critterer.Game.prototype = {
         bad_objects.callAll('animations.add', 'animations', 'walk',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 10, true);
         bad_objects.callAll('animations.play', 'animations', 'walk');
         
-        console.log('test');
-        
         slashes = this.add.graphics(0, 0);
         
         //Puts the label at the top of the screen
@@ -92,7 +90,6 @@ Critterer.Game.prototype = {
 
     //The bug launcher
     throwGoodObject: function (launchX) {
-         console.log('test');
         var obj = good_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random() * 100 - Math.random() * 100, 600);
         obj.anchor.setTo(launchX, 0.5);
@@ -101,8 +98,7 @@ Critterer.Game.prototype = {
     },
     
     throwBadObject: function(launchX) {
-         console.log('test');
-	   var obj = bad_objects.getFirstDead();
+        var obj = bad_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random()*100 - Math.random()*100, 600);
 	    obj.anchor.setTo(launchX, 0.5);
 	    obj.body.angularAcceleration = 100;
