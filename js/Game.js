@@ -105,7 +105,7 @@ Critterer.Game.prototype = {
 	   var obj = bad_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random()*100 - Math.random()*100, 600);
 	    obj.anchor.setTo(launchX, 0.5);
-	    //obj.body.angularAcceleration = 100;
+	    obj.body.angularAcceleration = 100;
 	    this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
     },
     
