@@ -8,7 +8,6 @@ Critterer.CutScene = function (game) {
     this.valueToUse;
 };
 
-
 Critterer.CutScene.prototype = {
 
     picker: function () {
@@ -23,7 +22,6 @@ Critterer.CutScene.prototype = {
         this.valueToUse = values[Math.floor(Math.random() * values.length)];
 
     },
-
 
     create: function () {
         this.picker();
