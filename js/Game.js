@@ -7,71 +7,141 @@
 Critterer.Game = function (game) {
 
     // establish class wide scope variables
-    this.good_objects;
-    this.bad_objects;
+    //this.good_objects;
+    //this.bad_objects;
     this.slashes;
     this.line;
     this.scoreLabel;
     this.points = [];
-
+    this.anim;
+    
     // initial game settings
     this.score = 0;
     this.fireRate = 1000;
     this.nextFire = 0;
+    this.paused = false;
+    this.last_paused = false;
+};
+
+var PausePanel = function(game, parent){
+	// Super call to Phaser.Group
+	Phaser.Group.call(this, game, parent);
+
+	// Add the panel
+	this.panel = this.create(this.game.width/2, 10, 'panel');
+	this.panel.anchor.setTo(0.5, 0);
+
+	// Add text
+	this.pauseText = this.game.add.text(10, 10, 'We are paused!');
+	this.add(this.pauseText);
+
+
+	// Add play button
+	this.btnPlay = this.game.add.button(20, 20, 'game_play_btn', function(){
+		this.game.state.getCurrentState().playGame()}
+	, this);
+	this.add(this.btnPlay);
+
+	// Place it out of bounds
+	this.x = 0;
+	this.y = -200;
+};
+
+PausePanel.prototype = Object.create(Phaser.Group.prototype);
+PausePanel.constructor = PausePanel;
+
+PausePanel.prototype.show = function(){
+	this.game.add.tween(this).to({y:0}, 500, Phaser.Easing.Bounce.Out, true);
+};
+PausePanel.prototype.hide = function(){
+	this.game.add.tween(this).to({y:-200}, 200, Phaser.Easing.Linear.NONE, true);
 };
 
 Critterer.Game.prototype = {
-
+    
 
     preload: function () {
 
     },
-
+    
     create: function () {
-
-        //These are green circles that represent what will be bugs
-        var bmd = this.add.bitmapData(100, 100);
-        bmd.ctx.fillStyle = '#00ff00';
-        bmd.ctx.arc(50, 50, 50, 0, Math.PI * 2);
-        bmd.ctx.fill();
-        this.cache.addBitmapData('good', bmd);
+        //add background before other objects
+        this.addBackground();
         
-        //These are the red circles that will be bad, sinister bugs that end our game
-        var bmd = this.add.bitmapData(64,64);
-	    bmd.ctx.fillStyle = '#ff0000';
-	    bmd.ctx.arc(32,32,32, 0, Math.PI * 2);
-	    bmd.ctx.fill();
-	    this.cache.addBitmapData('bad', bmd);
-
         //Makes the gravity system
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.physics.arcade.gravity.y = 300;
 
-        good_objects = this.createGroup(4, this.cache.getBitmapData('good'));
-        bad_objects = this.createGroup(4, this.cache.getBitmapData('bad'));
-
+        //creating groups of bugs
+        good_objects = this.createGroup(4,'good');
+        good_objects.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4], 15, true);
+        good_objects.callAll('animations.play', 'animations', 'spin');
+        bad_objects = this.createGroup(4, 'bad');
+        bad_objects.callAll('animations.add', 'animations', 'walk',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 10, true);
+        bad_objects.callAll('animations.play', 'animations', 'walk');
+        
         slashes = this.add.graphics(0, 0);
-
+        
         //Puts the label at the top of the screen
         scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
         scoreLabel.fill = 'white';
 
+        //gameoverpopup.fill = 'white';
+        
+        // Add a pause button
+	this.btnPause = this.game.add.button(20, 20, 'btnPause', this.pauseGame, this);
+        this.btnPause.inputEnabled = true;
+        this.btnPause.events.onInputDown.addOnce(this.pauseGame, this);
+
+	    // Let's build a pause panel
+	    this.pausePanel = new PausePanel(this.game);
+	    this.game.add.existing(this.pausePanel);
+	this.pausePanel.hide();
+    
         var launchX = Math.random() * 4;
 
         this.throwObject(launchX);
+       
+    },
+    
+    //function to add background
+    addBackground: function(){
+        this.add.image(0,0, 'background');
+    },
+    
+    pauseGame: function(){
+	   if(!this.paused){
+           console.log("And we're trying to pause!");
+		  // Show panel
+		  this.paused = true;
+		  this.pausePanel.show();
+           
+          this.game.physics.arcade.gravity.x = 0;
+           this.game.physics.arcade.gravity.y = 0;
+           this.game.physics.arcade.gravity.z = 0;
+	   }
+    },
+
+    playGame: function() {
+        if(this.paused){
+            this.paused = false;
+            this.pausePanel.hide();
+        }
+        this.physics.arcade.gravity.y = 300;
     },
 
     //Used for making a group of sprites (In our case, bugs)
-    createGroup: function (numItems, sprite) {
+    createGroup: function (num, sprite) {
         var group = this.add.group();
         group.enableBody = true;
         group.physicsBodyType = Phaser.Physics.ARCADE;
-        group.createMultiple(numItems, sprite);
+        group.createMultiple(num, sprite);
         group.setAll('checkWorldBounds', true);
         group.setAll('outOfBoundsKill', true);
         return group;
+        
     },
-
+        
     //The the timer for launching bugs
     throwObject: function (launchX) {
         if (this.time.now > this.nextFire && good_objects.countDead() > 0 && bad_objects.countDead()>0) {
@@ -89,24 +159,27 @@ Critterer.Game.prototype = {
         var obj = good_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random() * 100 - Math.random() * 100, 600);
         obj.anchor.setTo(launchX, 0.5);
-        //obj.body.angularAcceleration = 100;
+        obj.body.angularAcceleration = 100;
         this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
     },
     
     throwBadObject: function(launchX) {
-	    var obj = bad_objects.getFirstDead();
+        var obj = bad_objects.getFirstDead();
         obj.reset(this.world.centerX + Math.random()*100 - Math.random()*100, 600);
 	    obj.anchor.setTo(launchX, 0.5);
-	    //obj.body.angularAcceleration = 100;
+	    obj.body.angularAcceleration = 100;
 	    this.physics.arcade.moveToXY(obj, this.world.centerX, this.world.centerY, 530);
-},
+    },
+    
 
     update: function () {
 
         var num = Math.floor(Math.random() * 99) + 1; // this will get a number between 1 and 99;
         num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
-        this.throwObject();
+        if(!this.paused) {
+            this.throwObject();
+        }
 
         //This holds points for touchscreen movement
         //var points = [];
@@ -132,12 +205,26 @@ Critterer.Game.prototype = {
         slashes.endFill();
 
         //For handling collisions with an object
-        for (var i = 1; i < this.points.length; i++) {
-            line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i - 1].x, this.points[i - 1].y);
+        if(!this.paused) {
+            for (var i = 1; i < this.points.length; i++) {
+                line = new Phaser.Line(this.points[i].x, this.points[i].y, this.points[i - 1].x, this.points[i - 1].y);
 
-            good_objects.forEachExists(this.checkIntersects, this);
-            bad_objects.forEachExists(this.checkIntersects, this);
+                good_objects.forEachExists(this.checkIntersects, this);
+                bad_objects.forEachExists(this.checkIntersects, this);
+            }
         }
+        
+        if(this.paused) {
+            good_objects.forEachExists(this.holdFruit, this);
+            bad_objects.forEachExists(this.holdFruit, this);
+        }
+        
+        if(!this.paused && this.last_paused) {
+            good_objects.forEachExists(this.dropFruit, this);
+            bad_objects.forEachExists(this.dropFruit, this);
+        }
+        
+        this.last_paused = this.paused;
     },
 
     // Validates a target hit
@@ -150,6 +237,7 @@ Critterer.Game.prototype = {
         l2.angle = 90;
 
         contactPoint = new Phaser.Point(0, 0);
+
 
         if (Phaser.Line.intersects(line, l1, true) ||
             Phaser.Line.intersects(line, l2, true)) {
@@ -168,6 +256,14 @@ Critterer.Game.prototype = {
             }
         }
 
+    },
+    
+    holdFruit: function(fruit, callback) {
+        fruit.paused = true;
+    },
+    
+    dropFruit: function(fruit, callback) {
+        fruit.paused = false;
     },
 
     //Handles resetting the high score (and thus, the game)
@@ -194,5 +290,6 @@ Critterer.Game.prototype = {
             this.state.start('CutScene');
         }
     }
-
+    
+        
 }; 
