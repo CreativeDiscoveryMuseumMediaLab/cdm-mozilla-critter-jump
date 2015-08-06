@@ -7,5 +7,5 @@ volunteers from the museum who will design, code, and build this app using HTML,
 CSS, and Javascript. Our plan is to build the app using PhoneGap to be deployed 
 to both iOS and Android
 
-[Contributing Instructions](https://github.com/spartansystems/cdm-mozilla-critter-jump/blob/master/CONTRIBUTING.md)
+[Contributing Instructions](https://github.com/CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump/blob/master/CONTRIBUTING.md)
 
