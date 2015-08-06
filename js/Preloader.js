@@ -8,7 +8,6 @@ Critterer.Preloader = function(game) {
     this.loader_lbl = null;
     this.game_play_btn = null;
     this.ready = false;
-    console.log("test")
 };
 
 Critterer.Preloader.prototype = {
@@ -38,6 +37,8 @@ Critterer.Preloader.prototype = {
         // pre load assets for the rest of the game (e.g. Main Menu, Game, etc.)
         this.load.image('critterer_logo', 'img/critterer_logo.png');
         this.load.image('game_play_btn', 'img/hud/game-play.png');
+        this.load.image('btnPause', 'img/hud/pause.png');
+	this.load.image('panel', 'img/hud/proto-pause-menu.png');
     },
 
     /**
