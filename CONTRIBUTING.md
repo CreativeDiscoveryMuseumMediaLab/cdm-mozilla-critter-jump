@@ -14,6 +14,27 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 - **Only commit relevant changes.** Don't include changes that are not directly relevant to the fix you are making. The more focused a PR is, the faster it will get attention and be merged. Extra files changing only whitespace or trash files will likely get your PR closed.
 
 
+## Setting up your [Cloud9](http://c9.io) Workspace
+
+- **Create a workspace.** Clone your fork from Github.
+
+- **Add upstream remote** Run the following terminal command to set the CDM Github repository as the fetch remote:
+```
+git remote add upstream git@github.com:CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump.git --mirror=fetch;
+```
+ 
+- **Get Github cli tool: [Hub](https://hub.github.com/).** Run the following in your terminal:
+```
+sudo wget -P /usr/local/bin https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz; sudo tar -xzf /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz -C /usr/local/bin; sudo ln -s /usr/local/bin/hub-linux-amd64-2.2.1/hub /usr/local/bin/hub; sudo rm /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz;
+```
+
+- **Set git aliases.** Make typing git commands shorter with the following terminal command:
+```
+git config --global alias.co checkout; git config --global alias.br branch; git config --global alias.ci commit; git config --global alias.st status;
+```
+
+
+
 ## Milestones
 
 [GitHub Milestones][0] is the place to jump in and contribute to completing this project. This is a work in progress. We are still identifying and reaching Milestones. Your contributions toward meeting our Milestone goals are greatly appreciated.
