@@ -18,7 +18,7 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 
 - **Create a workspace.** Clone your fork from Github.
 
-- **Add upstream remote** Run the following terminal command to set the CDM Github repository as the fetch remote:
+- **Add upstream remote.** Run the following terminal command to set the CDM Github repository as the fetch remote:
 ```
 git remote add upstream git@github.com:CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump.git --mirror=fetch;
 ```
@@ -99,7 +99,10 @@ Thanks to Chad for creating the original Pixi.js and to Richard for creating Pha
 [4]: http://nodejs.org
 [5]: http://www.html5gamedevs.com/forum/14-phaser/
 
-# To create a scene:
+
+# Code Examples
+
+## To create a scene:
 
 1. Add a script reference in `index.html` pointing to your new file 
 (e.g. `<script type="text/javascript" src="js/CutScene.js"></script>`)
@@ -121,7 +124,7 @@ Critterer.CutScene.prototype = {
 }; 
 ```
 
-# To TEST your code:
+## To TEST your code:
 Do the following if you're changes are on a specific scene, and you would like to skip through the game to your specific scene:
 
 1. Change the `game.state.start('Preloader');` at the bottom of `js/Boot.js` to your particular scene (e.g. `game.state.start('CutScene');`)
