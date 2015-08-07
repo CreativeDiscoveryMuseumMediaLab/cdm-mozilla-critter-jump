@@ -199,7 +199,7 @@ Iterate this way until the branch is ready to be merged into `master`.
 
 ### Merge code
 
-Once your feature has been reviewed, tested, and given the O.K. by another team member, hit `Merge pull request` on Github. At this point Github has just run `(master) $ git merge masquerading`. Feel free to delete the branch on Github by clicking the `Delete branch` button. At this point, you may do the following to delete the branch locally and move on to the next feature:
+Once your feature has been reviewed, tested, and given the O.K. by another team member, a CDM repository admin will merge your changes. At this point, you may do the following to delete the branch locally and move on to the next feature:
 
 ```
 (masquerading) $ git checkout master
