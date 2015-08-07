@@ -9,7 +9,7 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 
 - **[Fork](https://www.youtube.com/watch?v=f5grYMXbAV0&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD&index=5) this repository.** Work with a copy of this repository.
 
-- **Send [Pull Requests](https://github.com/CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump/pulls) to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. The `master` branch is the latest release and PRs to that branch will be closed.
+- **Send [Pull Requests](https://github.com/CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump/pulls) to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. The `master` branch is the latest release and PRs to that branch will be closed (see Cloud9 setup below for easy, one-line command).
 
 - **Only commit relevant changes.** Don't include changes that are not directly relevant to the fix you are making. The more focused a PR is, the faster it will get attention and be merged. Extra files changing only whitespace or trash files will likely get your PR closed.
 
@@ -26,6 +26,11 @@ git remote add upstream git@github.com:CreativeDiscoveryMuseumMediaLab/cdm-mozil
 - **Get Github cli tool: [Hub](https://hub.github.com/).** Run the following in your terminal:
 ```
 sudo wget -P /usr/local/bin https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz; sudo tar -xzf /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz -C /usr/local/bin; sudo ln -s /usr/local/bin/hub-linux-amd64-2.2.1/hub /usr/local/bin/hub; sudo rm /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz;
+```
+
+Reminder: All Pull Requests must be sent to the `dev` branch from your `feature` branch.. With Hub, you can run this one liner to create a pull-request from your current `feature` branch:
+```
+hub pull-request -b CreativeDiscoveryMuseumMediaLab:dev
 ```
 
 - **Set git aliases.** Make typing git commands shorter with the following terminal command:
