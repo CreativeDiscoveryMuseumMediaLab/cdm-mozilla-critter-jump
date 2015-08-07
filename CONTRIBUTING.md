@@ -7,6 +7,8 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 
 ## Making Changes
 
+- **[Fork](https://www.youtube.com/watch?v=f5grYMXbAV0&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD&index=5) this repository.** Work with a copy of this repository.
+
 - **Send Pull Requests to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. `master` is the latest release and PRs to that branch will be closed.
 
 - **Ensure changes are jshint validated.** Our JSHint configuration file is provided in the repository and you should check against it before submitting.
