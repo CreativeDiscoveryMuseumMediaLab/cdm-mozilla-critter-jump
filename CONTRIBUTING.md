@@ -9,9 +9,30 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 
 - **[Fork](https://www.youtube.com/watch?v=f5grYMXbAV0&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD&index=5) this repository.** Work with a copy of this repository.
 
-- **Send Pull Requests to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. The `master` branch is the latest release and PRs to that branch will be closed.
+- **Send [Pull Requests](https://github.com/CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump/pulls) to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. The `master` branch is the latest release and PRs to that branch will be closed (see Cloud9 setup below for easy, one-line command).
 
 - **Only commit relevant changes.** Don't include changes that are not directly relevant to the fix you are making. The more focused a PR is, the faster it will get attention and be merged. Extra files changing only whitespace or trash files will likely get your PR closed.
+
+
+## Setting up your [Cloud9](http://c9.io) Workspace
+
+- **Create a workspace.** Clone your fork from Github.
+
+- **Add upstream remote.** Run the following terminal command to set the CDM Github repository as the fetch remote:
+```
+git remote add upstream git@github.com:CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump.git --mirror=fetch;
+```
+ 
+- **Get Github cli tool: [Hub](https://hub.github.com/).** Run the following in your terminal:
+```
+sudo wget -P /usr/local/bin https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz; sudo tar -xzf /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz -C /usr/local/bin; sudo ln -s /usr/local/bin/hub-linux-amd64-2.2.1/hub /usr/local/bin/hub; sudo rm /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz;
+```
+
+- **Set git aliases.** Make typing git commands shorter with the following terminal command:
+```
+git config --global alias.co checkout; git config --global alias.br branch; git config --global alias.ci commit; git config --global alias.st status;
+```
+
 
 
 ## Milestones
@@ -73,7 +94,10 @@ Thanks to Chad for creating the original Pixi.js and to Richard for creating Pha
 [4]: http://nodejs.org
 [5]: http://www.html5gamedevs.com/forum/14-phaser/
 
-# To create a scene:
+
+# Code Examples
+
+## To create a scene:
 
 1. Add a script reference in `index.html` pointing to your new file 
 (e.g. `<script type="text/javascript" src="js/CutScene.js"></script>`)
@@ -95,7 +119,7 @@ Critterer.CutScene.prototype = {
 }; 
 ```
 
-# To TEST your code:
+## To TEST your code:
 Do the following if you're changes are on a specific scene, and you would like to skip through the game to your specific scene:
 
 1. Change the `game.state.start('Preloader');` at the bottom of `js/Boot.js` to your particular scene (e.g. `game.state.start('CutScene');`)
@@ -105,7 +129,8 @@ Do the following if you're changes are on a specific scene, and you would like t
 > If you don't know how to view the javascript console, use alert() 
 > for the time being. then, later, google how to view the console in cloud9.
 
-# Effective pull requests and other good practices for teams using github
+
+# Github Flow
 
 ## Use pull requests
 
@@ -117,7 +142,7 @@ Here's a sample workflow demonstrating the use of pull requests.
 
 ### Work on a feature
 
-Create a new branch for the current story you are working on:
+Create a new branch for the current story you are working on. We'll name our example branch `masquerading`:
 
 ```
 (master) $ git branch  masquerading
@@ -149,9 +174,18 @@ The `-u` option adds an upstream tracking reference to your local branch, meanin
 
 ### Submit pull request
 
+#### Via Github website
+
 Use the Github site to create a pull request. First, switch to your branch on the Github website. Then, click on the pull requests tab on the right. At this point, you should be able to click create pull request. A couple of things to be aware of:
 
 Use Github's preview facilties to ensure the pull request is well structured and clear. The description should explain what the pull request contains as well as the thinking behind it. Once the pull request is created, you should find someone on your team to review it and send them a link to the request using the project mailing list so anyone else with an interest can take a look.
+
+#### Via Hub command line tool
+
+All Pull Requests must be sent to the `dev` branch from your `feature` branch.. With Hub, you can run this one liner to create a pull-request from your current `feature` branch:
+```
+hub pull-request -b CreativeDiscoveryMuseumMediaLab:dev
+```
 
 ### Code review
 
@@ -165,7 +199,7 @@ Iterate this way until the branch is ready to be merged into `master`.
 
 ### Merge code
 
-Once your feature has been reviewed, tested, and given the O.K. by another team member, hit `Merge pull request` on Github. At this point Github has just run `(master) $ git merge masquerading`. Feel free to delete the branch on Github by clicking the `Delete branch` button. At this point, you may do the following to delete the branch locally and move on to the next feature:
+Once your feature has been reviewed, tested, and given the O.K. by another team member, a CDM repository admin will merge your changes. At this point, you may do the following to delete the branch locally and move on to the next feature:
 
 ```
 (masquerading) $ git checkout master
@@ -176,4 +210,5 @@ Once your feature has been reviewed, tested, and given the O.K. by another team 
 
 
 > *How to contribute* is adapted from Phaser's own [CONTRIBUTE.md](https://github.com/photonstorm/phaser/blob/master/CONTRIBUTING.md)
-> *Effective pull requests and other good practices for teams using github* is adapted from the David Winterbottom's [article](http://codeinthehole.com/writing/pull-requests-and-other-good-practices-for-teams-using-github/), dated Saturday, 20 October 2012
+
+> *Github Flow* is adapted from the David Winterbottom's [article](http://codeinthehole.com/writing/pull-requests-and-other-good-practices-for-teams-using-github/), dated Saturday, 20 October 2012
