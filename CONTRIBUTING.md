@@ -134,7 +134,7 @@ Do the following if you're changes are on a specific scene, and you would like t
 > If you don't know how to view the javascript console, use alert() 
 > for the time being. then, later, google how to view the console in cloud9.
 
-# Effective pull requests and other good practices for teams using github
+# Github Flow
 
 ## Use pull requests
 
