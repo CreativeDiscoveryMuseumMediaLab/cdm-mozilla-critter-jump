@@ -205,4 +205,4 @@ Once your feature has been reviewed, tested, and given the O.K. by another team 
 
 
 > *How to contribute* is adapted from Phaser's own [CONTRIBUTE.md](https://github.com/photonstorm/phaser/blob/master/CONTRIBUTING.md)
-> *Effective pull requests and other good practices for teams using github* is adapted from the David Winterbottom's [article](http://codeinthehole.com/writing/pull-requests-and-other-good-practices-for-teams-using-github/), dated Saturday, 20 October 2012
+> *Github Flow* is adapted from the David Winterbottom's [article](http://codeinthehole.com/writing/pull-requests-and-other-good-practices-for-teams-using-github/), dated Saturday, 20 October 2012
