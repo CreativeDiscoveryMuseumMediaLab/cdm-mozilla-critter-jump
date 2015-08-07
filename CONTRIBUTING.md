@@ -9,7 +9,7 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 
 - **[Fork](https://www.youtube.com/watch?v=f5grYMXbAV0&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD&index=5) this repository.** Work with a copy of this repository.
 
-- **Send Pull Requests to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. The `master` branch is the latest release and PRs to that branch will be closed.
+- **Send [Pull Requests](https://github.com/CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump/pulls) to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. The `master` branch is the latest release and PRs to that branch will be closed.
 
 - **Only commit relevant changes.** Don't include changes that are not directly relevant to the fix you are making. The more focused a PR is, the faster it will get attention and be merged. Extra files changing only whitespace or trash files will likely get your PR closed.
 
