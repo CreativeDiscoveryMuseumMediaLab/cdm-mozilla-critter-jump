@@ -11,8 +11,6 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 
 - **Send Pull Requests to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. `master` is the latest release and PRs to that branch will be closed.
 
-- **Ensure changes are jshint validated.** Our JSHint configuration file is provided in the repository and you should check against it before submitting.
-
 - **Only commit relevant changes.** Don't include changes that are not directly relevant to the fix you are making. The more focused a PR is, the faster it will get attention and be merged. Extra files changing only whitespace or trash files will likely get your PR closed.
 
 
