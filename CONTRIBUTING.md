@@ -5,7 +5,7 @@ It's important to us that you feel you can contribute towards the evolution of C
 Before contributing, please read the [code of conduct](https://github.com/CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump/edit/master/CODE_OF_CONDUCT.md).
 
 
-##Making Changes
+## Making Changes
 
 - **Send Pull Requests to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. `master` is the latest release and PRs to that branch will be closed.
 
@@ -34,27 +34,27 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 **5. Share as much information as possible.** Include browser version affected, your OS, version of the library, steps to reproduce, etc. "X isn't working!!!1!" will probably just be closed.
 
 
-##Pixi and Phaser
+## Pixi and Phaser
 
 It's important to understand that internally Phaser uses [Pixi.js](https://github.com/GoodBoyDigital/pixi.js/) for all rendering. It's possible you may find a bug that is generated on the Pixi level rather than Phaser. You're welcome to still report the issue of course, but if you get a reply saying we think it might be a Pixi issue this is what we're talking about :)
 
 
-##Support Forum
+## Support Forum
 
 Phaser has a very active [Phaser Support Forum][5]. If you need general support, or are struggling to understand how to do something or need your code checked over, then we would urge you to post it to our forum. There are a lot of friendly devs in there who can help, as well as the core Phaser and Pixi teams, so it's a great place to get support from. You're welcome to report bugs directly on GitHub, but for general support we'd always recommend using the forum first.
 
 
-##Dev vs. Master
+## Dev vs. Master
 
 The dev branch of Phaser is our 'current working' version. It is always ahead of the master branch in terms of features and fixes. However it's also bleeding-edge and experimental and we cannot and do not guarantee it will compile or work for you. Very often we have to break things for a few days while we rebuild and patch. So by all means please export the dev branch and contribute towards it, indeed that is where all Pull Requests should be sent, but do so understanding the API may change beneath you.
 
 
-##Coding style preferences are not contributions
+## Coding style preferences are not contributions
 
 If your PR is doing little more than changing the Critterer source code into a format / coding style that you prefer then we will automatically close it. All PRs must adhere to the coding style already set-out across the thousands of lines of code in Phaser and Critterer. Your personal preferences for how things should "look" or be structured do not apply here, sorry. PRs should fix bugs, fix documentation or add features. No changes for the sake of change.
 
 
-##Code Style Guide
+## Code Style Guide
 
 - Use 4 spaces for tabs, never tab characters.
 
