@@ -28,11 +28,6 @@ git remote add upstream git@github.com:CreativeDiscoveryMuseumMediaLab/cdm-mozil
 sudo wget -P /usr/local/bin https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz; sudo tar -xzf /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz -C /usr/local/bin; sudo ln -s /usr/local/bin/hub-linux-amd64-2.2.1/hub /usr/local/bin/hub; sudo rm /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz;
 ```
 
-Reminder: All Pull Requests must be sent to the `dev` branch from your `feature` branch.. With Hub, you can run this one liner to create a pull-request from your current `feature` branch:
-```
-hub pull-request -b CreativeDiscoveryMuseumMediaLab:dev
-```
-
 - **Set git aliases.** Make typing git commands shorter with the following terminal command:
 ```
 git config --global alias.co checkout; git config --global alias.br branch; git config --global alias.ci commit; git config --global alias.st status;
@@ -178,9 +173,18 @@ The `-u` option adds an upstream tracking reference to your local branch, meanin
 
 ### Submit pull request
 
+#### Via Github website
+
 Use the Github site to create a pull request. First, switch to your branch on the Github website. Then, click on the pull requests tab on the right. At this point, you should be able to click create pull request. A couple of things to be aware of:
 
 Use Github's preview facilties to ensure the pull request is well structured and clear. The description should explain what the pull request contains as well as the thinking behind it. Once the pull request is created, you should find someone on your team to review it and send them a link to the request using the project mailing list so anyone else with an interest can take a look.
+
+#### Via Hub command line tool
+
+All Pull Requests must be sent to the `dev` branch from your `feature` branch.. With Hub, you can run this one liner to create a pull-request from your current `feature` branch:
+```
+hub pull-request -b CreativeDiscoveryMuseumMediaLab:dev
+```
 
 ### Code review
 
