@@ -5,6 +5,15 @@ It's important to us that you feel you can contribute towards the evolution of C
 Before contributing, please read the [code of conduct](https://github.com/CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump/edit/master/CODE_OF_CONDUCT.md).
 
 
+##Making Changes
+
+- **Send Pull Requests to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. `master` is the latest release and PRs to that branch will be closed.
+
+- **Ensure changes are jshint validated.** Our JSHint configuration file is provided in the repository and you should check against it before submitting.
+
+- **Only commit relevant changes.** Don't include changes that are not directly relevant to the fix you are making. The more focused a PR is, the faster it will get attention and be merged. Extra files changing only whitespace or trash files will likely get your PR closed.
+
+
 ## Milestones
 
 [GitHub Milestones][0] is the place to jump in and contribute to completing this project. This is a work in progress. We are still identifying and reaching Milestones. Your contributions toward meeting our Milestone goals are greatly appreciated.
@@ -38,15 +47,6 @@ Phaser has a very active [Phaser Support Forum][5]. If you need general support,
 ##Dev vs. Master
 
 The dev branch of Phaser is our 'current working' version. It is always ahead of the master branch in terms of features and fixes. However it's also bleeding-edge and experimental and we cannot and do not guarantee it will compile or work for you. Very often we have to break things for a few days while we rebuild and patch. So by all means please export the dev branch and contribute towards it, indeed that is where all Pull Requests should be sent, but do so understanding the API may change beneath you.
-
-
-##Making Changes
-
-- **Send Pull Requests to the `dev` branch.** All Pull Requests must be sent to the `dev` branch from your `feature` branch. `master` is the latest release and PRs to that branch will be closed.
-
-- **Ensure changes are jshint validated.** Our JSHint configuration file is provided in the repository and you should check against it before submitting.
-
-- **Only commit relevant changes.** Don't include changes that are not directly relevant to the fix you are making. The more focused a PR is, the faster it will get attention and be merged. Extra files changing only whitespace or trash files will likely get your PR closed.
 
 
 ##Coding style preferences are not contributions
