@@ -96,8 +96,10 @@ Critterer.CutScene.prototype = {
 ```
 
 # To TEST your code:
-1. change the `game.state.start('Preloader');` at the bottom of `js/Boot.js` to your particular scene (e.g. `game.state.start('CutScene');`)
-2. uncomment the `alert('this is a test');` or `console.log('this is a test');` statement in the create method of the template provided above.
+Do the following if you're changes are on a specific scene, and you would like to skip through the game to your specific scene:
+
+1. Change the `game.state.start('Preloader');` at the bottom of `js/Boot.js` to your particular scene (e.g. `game.state.start('CutScene');`)
+2. Use an `alert('this is a test');` or `console.log('this is a test');` statement in the create method of the template provided above.
 
 > NOTE:
 > If you don't know how to view the javascript console, use alert() 
