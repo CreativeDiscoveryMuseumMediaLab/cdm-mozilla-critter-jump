@@ -129,6 +129,7 @@ Do the following if you're changes are on a specific scene, and you would like t
 > If you don't know how to view the javascript console, use alert() 
 > for the time being. then, later, google how to view the console in cloud9.
 
+
 # Github Flow
 
 ## Use pull requests
@@ -141,7 +142,7 @@ Here's a sample workflow demonstrating the use of pull requests.
 
 ### Work on a feature
 
-Create a new branch for the current story you are working on:
+Create a new branch for the current story you are working on. We'll name our example branch `masquerading`:
 
 ```
 (master) $ git branch  masquerading
