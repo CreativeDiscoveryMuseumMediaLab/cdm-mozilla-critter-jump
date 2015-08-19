@@ -16,7 +16,7 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 
 ## Setting up your [Cloud9](http://c9.io) Workspace
 
-- **Create a workspace.** Clone your fork from Github.
+- **Create a workspace.** In Cloud9, add a new workspace and clone your fork from Github.
 
 - **Add upstream remote.** Run the following terminal command to set the CDM Github repository as the fetch remote:
 ```
