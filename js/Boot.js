@@ -15,7 +15,7 @@ Critterer.Boot.prototype = {
      * @todo display sponsor logos
      */
     preload: function () {
-        this.load.image('preload_bar', 'img/hud/loader_bar.png');
+        this.load.image('preload_bar', 'img/hud/loader-bar.png');
     },
 
     /**
