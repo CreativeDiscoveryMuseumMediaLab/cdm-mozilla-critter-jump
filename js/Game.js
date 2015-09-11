@@ -32,7 +32,8 @@ var PausePanel = function(game, parent){
 	this.panel.anchor.setTo(0.5, 0.5);
 
 	// Add text
-	this.pauseText = this.game.add.text(10, 10, 'We are paused!');
+	this.pauseText = this.game.add.text(this.panel.x, this.panel.y -90, 'Pause');
+	this.pauseText.anchor.setTo(0.5, 0.5)
 	this.add(this.pauseText);
 
 
