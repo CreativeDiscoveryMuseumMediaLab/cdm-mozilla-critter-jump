@@ -51,7 +51,7 @@ PausePanel.prototype = Object.create(Phaser.Group.prototype);
 PausePanel.constructor = PausePanel;
 
 PausePanel.prototype.show = function(){
-	this.game.add.tween(this).to({y:0}, 500, Phaser.Easing.Bounce.Out, true);
+	this.game.add.tween(this).to({y:this.game.height/2}, 500, Phaser.Easing.Bounce.Out, true);
 };
 PausePanel.prototype.hide = function(){
 	this.game.add.tween(this).to({y:-200}, 200, Phaser.Easing.Linear.NONE, true);
