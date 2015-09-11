@@ -106,7 +106,6 @@ Critterer.Game.prototype = {
     
     //function to add background
     addBackground: function(){
-        this.add.image(0,0, 'background');
     },
     
     pauseGame: function(){
