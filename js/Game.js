@@ -29,10 +29,11 @@ var PausePanel = function(game, parent){
 
 	// Add the panel
 	this.panel = this.create(this.game.width/2, 10, 'panel');
-	this.panel.anchor.setTo(0.5, 0);
+	this.panel.anchor.setTo(0.5, 0.5);
 
 	// Add text
-	this.pauseText = this.game.add.text(10, 10, 'We are paused!');
+	this.pauseText = this.game.add.text(this.panel.x, this.panel.y -90, 'Pause');
+	this.pauseText.anchor.setTo(0.5, 0.5)
 	this.add(this.pauseText);
 
 
@@ -51,7 +52,7 @@ PausePanel.prototype = Object.create(Phaser.Group.prototype);
 PausePanel.constructor = PausePanel;
 
 PausePanel.prototype.show = function(){
-	this.game.add.tween(this).to({y:0}, 500, Phaser.Easing.Bounce.Out, true);
+	this.game.add.tween(this).to({y:this.game.height/2}, 500, Phaser.Easing.Bounce.Out, true);
 };
 PausePanel.prototype.hide = function(){
 	this.game.add.tween(this).to({y:-200}, 200, Phaser.Easing.Linear.NONE, true);
