@@ -39,7 +39,7 @@ Critterer.Boot.prototype = {
         this.scale.setScreenSize(true);
 
         this.input.addPointer();
-        this.stage.backgroundColor = '#171642';
+        this.stage.backgroundColor = '#663300';
 
         this.state.start('Preloader');
     },

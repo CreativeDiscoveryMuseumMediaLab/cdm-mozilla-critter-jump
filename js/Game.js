@@ -106,7 +106,8 @@ Critterer.Game.prototype = {
     
     //function to add background
     addBackground: function(){
-        this.add.image(0,0, 'background');
+        // @todo Add borders to background
+        
     },
     
     pauseGame: function(){
