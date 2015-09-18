@@ -128,6 +128,7 @@ Critterer.Game.prototype = {
         if(this.paused){
             this.paused = false;
             this.pausePanel.hide();
+            this.btnPause.alpha = 1;
         }
         this.physics.arcade.gravity.y = 300;
     },
