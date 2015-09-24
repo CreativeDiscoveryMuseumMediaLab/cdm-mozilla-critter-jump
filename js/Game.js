@@ -32,15 +32,16 @@ var PausePanel = function(game, parent){
 	this.panel.anchor.setTo(0.5, 0.5);
 
 	// Add text
-	this.pauseText = this.game.add.text(this.panel.x, this.panel.y -90, 'Pause');
+	this.pauseText = this.game.add.text(this.panel.x, this.panel.y - 90, 'Pause');
 	this.pauseText.anchor.setTo(0.5, 0.5)
 	this.add(this.pauseText);
 
 
 	// Add play button
-	this.btnPlay = this.game.add.button(20, 20, 'game_play_btn', function(){
-		this.game.state.getCurrentState().playGame()}
-	, this);
+	this.btnPlay = this.game.add.button(this.panel.x, this.panel.y + 30, 'game_play_btn', function(){
+		this.game.state.getCurrentState().playGame()
+	}, this);
+	this.btnPlay.anchor.setTo(0.5, 0.5)
 	this.add(this.btnPlay);
 
 	// Place it out of bounds
