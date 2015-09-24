@@ -18,6 +18,10 @@
     
 </head>
 <body>
+  
+  <canvas id="a" width= "0" height= "0" style="position:absolute;z-index:2;pointer-events:none;">
+            Your browser does not support HTML5 Canvas.
+  </canvas>
   <div id="game_container"></div>
   <script type="text/javascript">
     window.onload = function () {
@@ -34,7 +38,7 @@
       
       // initiate game at Boot state
       game.state.start('Boot');
-    }
+    };
   </script>
 </body>
 </html>

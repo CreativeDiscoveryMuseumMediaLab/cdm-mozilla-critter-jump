@@ -65,6 +65,8 @@ Critterer.Game.prototype = {
     },
     
     create: function () {
+        // Set up!
+        
         //add background before other objects
         this.addBackground();
         
@@ -104,6 +106,11 @@ Critterer.Game.prototype = {
        
     },
     
+    //white out page
+    whiteout: function(){
+        
+    },
+    
     //function to add background
     addBackground: function(){
         this.add.image(0,0, 'background');
@@ -112,6 +119,7 @@ Critterer.Game.prototype = {
     pauseGame: function(){
 	   if(!this.paused){
            console.log("And we're trying to pause!");
+           document.bgcolor="#CCCCC";
 		  // Show panel
 		  this.paused = true;
 		  this.pausePanel.show();
@@ -119,6 +127,15 @@ Critterer.Game.prototype = {
           this.game.physics.arcade.gravity.x = 0;
            this.game.physics.arcade.gravity.y = 0;
            this.game.physics.arcade.gravity.z = 0;
+        var a_canvas = document.getElementById("a");
+        var context = a_canvas.getContext("2d");
+        a_canvas.height = 308;
+        a_canvas.width = 547;
+
+        // Draw the face
+        context.globalAlpha = .8;
+        context.fillStyle = "white";
+        context.fillRect(0, 0, 900, 800);
 	   }
     },
 
@@ -180,7 +197,6 @@ Critterer.Game.prototype = {
         if(!this.paused) {
             this.throwObject();
         }
-
         //This holds points for touchscreen movement
         //var points = [];
 
