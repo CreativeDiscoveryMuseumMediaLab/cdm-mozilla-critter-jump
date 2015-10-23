@@ -38,7 +38,11 @@ var PausePanel = function(game, parent){
 
 
 	// Add play button
-	this.btnPlay = this.game.add.button(this.panel.x, this.panel.y + 30, 'game_play_btn', function(){
+	this.btnPlay = this.game.add.button(
+	    this.panel.x,
+	    this.panel.y + 30,
+	    'game_play_btn',
+	    function(){
 		this.game.state.getCurrentState().playGame()
 	}, this);
 	this.btnPlay.anchor.setTo(0.5, 0.5)
