@@ -46,7 +46,7 @@ var PausePanel = function(game, parent){
 	this.y = -200;
 
 
-// Add Main Menu button
+    // Add Main Menu button
 	this.btnMenu = this.game.add.button(
 	    this.panel.x - 150,
 	    this.btnPlay.y,
@@ -62,7 +62,7 @@ var PausePanel = function(game, parent){
 	this.y = -200;
 
 
-// Add Restart button
+    // Add Restart button
 	this.btnRestart = this.game.add.button(
 	    this.panel.x + 150,
 	    this.btnPlay.y,
