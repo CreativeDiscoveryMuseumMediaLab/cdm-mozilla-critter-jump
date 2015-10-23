@@ -14,13 +14,6 @@ Critterer.Game = function (game) {
     this.scoreLabel;
     this.points = [];
     this.anim;
-    
-    // initial game settings
-    this.score = 0;
-    this.fireRate = 1000;
-    this.nextFire = 0;
-    this.paused = false;
-    this.last_paused = false;
 };
 
 var PausePanel = function(game, parent){
@@ -38,11 +31,47 @@ var PausePanel = function(game, parent){
 
 
 	// Add play button
-	this.btnPlay = this.game.add.button(this.panel.x, this.panel.y + 30, 'game_play_btn', function(){
-		this.game.state.getCurrentState().playGame()
+	this.btnPlay = this.game.add.button(
+	    this.panel.x,
+	    this.panel.y + 30,
+	    'game_play_btn',
+	    function(){
+		this.game.state.getCurrentState().unpause()
 	}, this);
 	this.btnPlay.anchor.setTo(0.5, 0.5)
 	this.add(this.btnPlay);
+
+	// Place it out of bounds
+	this.x = 0;
+	this.y = -200;
+
+
+    // Add Main Menu button
+	this.btnMenu = this.game.add.button(
+	    this.panel.x - 150,
+	    this.btnPlay.y,
+	    'menu_btn',
+	    function(){
+		this.game.state.start('MainMenu');
+	}, this);
+	this.btnMenu.anchor.setTo(0.5, 0.5)
+	this.add(this.btnMenu);
+
+	// Place it out of bounds
+	this.x = 0;
+	this.y = -200;
+
+
+    // Add Restart button
+	this.btnRestart = this.game.add.button(
+	    this.panel.x + 150,
+	    this.btnPlay.y,
+	    'restart_btn',
+	    function(){
+		this.game.state.start('Game');
+	}, this);
+	this.btnRestart.anchor.setTo(0.5, 0.5)
+	this.add(this.btnRestart);
 
 	// Place it out of bounds
 	this.x = 0;
@@ -67,6 +96,12 @@ Critterer.Game.prototype = {
     },
     
     create: function () {
+        this.score = 0;
+        this.fireRate = 1000;
+        this.nextFire = 0;
+        this.paused = false;
+        this.last_paused = false;
+        
         //add background before other objects
         this.addBackground();
         
@@ -125,7 +160,7 @@ Critterer.Game.prototype = {
 	   }
     },
 
-    playGame: function() {
+    unpause: function() {
         if(this.paused){
             this.paused = false;
             this.pausePanel.hide();
