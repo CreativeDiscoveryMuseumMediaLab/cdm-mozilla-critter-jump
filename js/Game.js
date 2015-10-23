@@ -51,6 +51,38 @@ var PausePanel = function(game, parent){
 	// Place it out of bounds
 	this.x = 0;
 	this.y = -200;
+
+
+// Add Main Menu button
+	this.btnMenu = this.game.add.button(
+	    this.panel.x - 150,
+	    this.btnPlay.y,
+	    'menu_btn',
+	    function(){
+		this.game.state.start('MainMenu');
+	}, this);
+	this.btnMenu.anchor.setTo(0.5, 0.5)
+	this.add(this.btnMenu);
+
+	// Place it out of bounds
+	this.x = 0;
+	this.y = -200;
+
+
+// Add Restart button
+	this.btnRestart = this.game.add.button(
+	    this.panel.x + 150,
+	    this.btnPlay.y,
+	    'restart_btn',
+	    function(){
+		this.game.state.start('Game');
+	}, this);
+	this.btnRestart.anchor.setTo(0.5, 0.5)
+	this.add(this.btnRestart);
+
+	// Place it out of bounds
+	this.x = 0;
+	this.y = -200;
 };
 
 PausePanel.prototype = Object.create(Phaser.Group.prototype);
