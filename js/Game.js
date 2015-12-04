@@ -28,8 +28,7 @@ var PausePanel = function(game, parent){
 	this.pauseText = this.game.add.text(this.panel.x, this.panel.y - 90, 'Pause');
 	this.pauseText.anchor.setTo(0.5, 0.5)
 	this.add(this.pauseText);
-
-
+    
 	// Add play button
 	this.btnPlay = this.game.add.button(
 	    this.panel.x,
@@ -41,9 +40,6 @@ var PausePanel = function(game, parent){
 	this.btnPlay.anchor.setTo(0.5, 0.5)
 	this.add(this.btnPlay);
 
-	// Place it out of bounds
-	this.x = 0;
-	this.y = -200;
 
 
     // Add Main Menu button
@@ -57,9 +53,6 @@ var PausePanel = function(game, parent){
 	this.btnMenu.anchor.setTo(0.5, 0.5)
 	this.add(this.btnMenu);
 
-	// Place it out of bounds
-	this.x = 0;
-	this.y = -200;
 
 
     // Add Restart button
