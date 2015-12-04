@@ -20,10 +20,22 @@ var PausePanel = function(game, parent){
 	// Super call to Phaser.Group
 	Phaser.Group.call(this, game, parent);
 
-	// Add the panel
-	this.panel = this.create(this.game.width/2, 10, 'panel');
-	this.panel.anchor.setTo(0.5, 0.5);
+    var backgroundColor = "0xffffff";
+    var backgroundOpacity = 0.5;
+    this.pause_bg = this.game.add.graphics(0,0);
+    this.pause_bg.beginFill(backgroundColor, backgroundOpacity);
+    this.pause_bg.x = 0;
+    this.pause_bg.y = 0;
+    this.pause_bg.drawRect(0, 0, this.game.width, this.game.height);
+    this.add(this.pause_bg);
 
+	// Add the panel
+	this.panel = this.create(0, 0, 'panel');
+	this.panel.anchor.setTo(0.5, 0.5);
+	this.panel.x = this.game.width /2;
+	this.panel.y = this.game.height /2;
+	this.add(this.panel);
+	
 	// Add text
 	this.pauseText = this.game.add.text(this.panel.x, this.panel.y - 90, 'Pause');
 	this.pauseText.anchor.setTo(0.5, 0.5)
@@ -68,17 +80,20 @@ var PausePanel = function(game, parent){
 
 	// Place it out of bounds
 	this.x = 0;
-	this.y = -200;
+	this.y = -this.game.height;
+	
+	
 };
 
 PausePanel.prototype = Object.create(Phaser.Group.prototype);
 PausePanel.constructor = PausePanel;
 
 PausePanel.prototype.show = function(){
-	this.game.add.tween(this).to({y:this.game.height/2}, 500, Phaser.Easing.Bounce.Out, true);
+	this.game.add.tween(this).to({y:0}, 500, Phaser.Easing.Bounce.Out, true);
+	this.game.add.tween(this.pause_bg).to({alpha: 1}, 500, Phaser.Easing.Bounce.Out, true);
 };
 PausePanel.prototype.hide = function(){
-	this.game.add.tween(this).to({y:-200}, 200, Phaser.Easing.Linear.NONE, true);
+	this.game.add.tween(this).to({y: this.game.height * -1.5}, 200, Phaser.Easing.Linear.NONE, true);
 };
 
 Critterer.Game.prototype = {
@@ -113,7 +128,7 @@ Critterer.Game.prototype = {
         slashes = this.add.graphics(0, 0);
         
         //Puts the label at the top of the screen
-        scoreLabel = this.add.text(10, 10, 'Tip: get the green ones!');
+        scoreLabel = this.add.text(10, 10, 'Tip: Get the gold ones!');
         scoreLabel.fill = 'white';
 
         //gameoverpopup.fill = 'white';
