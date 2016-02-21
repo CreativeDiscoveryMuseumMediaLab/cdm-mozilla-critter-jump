@@ -39,7 +39,6 @@ Critterer.Preloader.prototype = {
         this.load.spritesheet('good', 'img/sprites/good.png', 32, 32,6);
         this.load.image('critterer_logo', 'img/critterer-logo.png');
         this.load.image('game_play_btn', 'img/hud/play-icon.png');
-        this.load.image('background', 'img/background.png');
         this.load.image('btnPause', 'img/hud/pause.png');
 	    this.load.image('panel', 'img/hud/pause-modal.png');
 	    this.load.image('restart_btn', 'img/hud/restart-icon.png');
