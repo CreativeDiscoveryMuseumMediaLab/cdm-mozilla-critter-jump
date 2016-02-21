@@ -62,6 +62,6 @@ Critterer.Preloader.prototype = {
      */
     update: function () {
         this.ready = true;
-        this.state.start('Game');
+        this.state.start('MainMenu');
     }
 }
