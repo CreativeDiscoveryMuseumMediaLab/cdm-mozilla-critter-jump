@@ -35,8 +35,9 @@ Critterer.Preloader.prototype = {
         this.load.setPreloadSprite(this.preload_bar);
 
         // pre load assets for the rest of the game (e.g. Main Menu, Game, etc.)
-        this.load.spritesheet('bad', 'img/sprites/bad.png', 39, 40, 16);
-        this.load.spritesheet('good', 'img/sprites/good.png', 32, 32,6);
+        this.load.image('scorpion', 'img/sprites/emperor-scorpion.png');
+        this.load.image('cockroach', 'img/sprites/madagascar-hissing-cockroach.png');
+        this.load.image('stick', 'img/sprites/walking-stick.png');
         this.load.image('critterer_logo', 'img/critterer-logo.png');
         this.load.image('game_play_btn', 'img/hud/play-icon.png');
         this.load.image('btnPause', 'img/hud/pause.png');

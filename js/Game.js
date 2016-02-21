@@ -121,13 +121,9 @@ Critterer.Game.prototype = {
         this.physics.arcade.gravity.y = 300;
 
         //creating groups of bugs
-        good_objects = this.createGroup(4,'good');
-        good_objects.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4], 15, true);
-        good_objects.callAll('animations.play', 'animations', 'spin');
-        bad_objects = this.createGroup(4, 'bad');
-        bad_objects.callAll('animations.add', 'animations', 'walk',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 10, true);
-        bad_objects.callAll('animations.play', 'animations', 'walk');
-        
+        good_objects = this.createGroup(4,'cockroach');
+        bad_objects = this.createGroup(4, 'scorpion');
+
         slashes = this.add.graphics(0, 0);
         
         //Puts the label at the top of the screen
