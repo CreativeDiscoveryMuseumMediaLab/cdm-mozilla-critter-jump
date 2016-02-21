@@ -21,6 +21,8 @@ Critterer.MainMenu.prototype = {
          * Implements create()
          */
         create: function() {
+            this.ground = this.add.sprite(-4, this.world.height - 75, 'ground');
+            this.ground.width = this.game.width + 8;
 
             this.critterer_logo = this.add.sprite(this.world.centerX, this.world.centerY - 75, 'critterer_logo');
             this.critterer_logo.anchor.setTo(0.5, 0.5);

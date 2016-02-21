@@ -104,6 +104,9 @@ Critterer.Game.prototype = {
     },
     
     create: function () {
+        this.ground = this.add.sprite(-4, this.world.height - 75, 'ground');
+        this.ground.width = this.game.width + 8;
+
         this.score = 0;
         this.fireRate = 1000;
         this.nextFire = 0;
