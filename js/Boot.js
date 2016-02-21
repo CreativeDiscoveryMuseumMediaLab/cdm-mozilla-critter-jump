@@ -16,6 +16,7 @@ Critterer.Boot.prototype = {
      */
     preload: function () {
         this.load.image('preload_bar', 'img/hud/loader-bar.png');
+        this.load.image('ground', 'img/ground.png');
     },
 
     /**
