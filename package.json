@@ -1,0 +1,10 @@
+{
+  "name": "cdm-mozilla-critter-jump",
+  "version": "1.0.0",
+  "repository": "git@github.com:jcandan/cdm-mozilla-critter-jump.git",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1"
+  }
+}
