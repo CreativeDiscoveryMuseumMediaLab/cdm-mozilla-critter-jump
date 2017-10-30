@@ -22,7 +22,24 @@ Before contributing, please read the [code of conduct](https://github.com/Creati
 ```
 git remote add upstream git@github.com:CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump.git --mirror=fetch;
 ```
- 
+
+- **Get Github cli tool: [Hub](https://hub.github.com/).** Run the following in your terminal:
+```
+sudo wget -P /usr/local/bin https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz; sudo tar -xzf /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz -C /usr/local/bin; sudo ln -s /usr/local/bin/hub-linux-amd64-2.2.1/hub /usr/local/bin/hub; sudo rm /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz;
+```
+
+## Setting up your Local Workspace
+
+- **Clone Your Fork.** Pick a location on your computer for this project and clone your fork from Github.
+```
+git clone git@github.com:[MYUSERNAME]/cdm-mozilla-critter-jump.git
+```
+
+- **Add upstream remote.** Set the CDM Github repository as the fetch remote.
+```
+git remote add upstream git@github.com:CreativeDiscoveryMuseumMediaLab/cdm-mozilla-critter-jump.git --mirror=fetch;
+```
+
 - **Get Github cli tool: [Hub](https://hub.github.com/).** Run the following in your terminal:
 ```
 sudo wget -P /usr/local/bin https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz; sudo tar -xzf /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz -C /usr/local/bin; sudo ln -s /usr/local/bin/hub-linux-amd64-2.2.1/hub /usr/local/bin/hub; sudo rm /usr/local/bin/hub-linux-amd64-2.2.1.tar.gz;
@@ -33,7 +50,15 @@ sudo wget -P /usr/local/bin https://github.com/github/hub/releases/download/v2.2
 git config --global alias.co checkout; git config --global alias.br branch; git config --global alias.ci commit; git config --global alias.st status;
 ```
 
+- **Run Yarn Install**
+```
+yarn install
+```
 
+- **Gulp Dev**
+```
+gulp dev
+```
 
 ## Milestones
 
