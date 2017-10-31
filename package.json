@@ -6,6 +6,7 @@
   "dependencies": {
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
+    "jquery.fancybox": "2.1.5",
     "phaser-ce": "2.1.3"
   }
 }
