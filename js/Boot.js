@@ -16,7 +16,7 @@ Critterer.Boot.prototype = {
      */
     preload: function () {
         this.load.image('preload_bar', 'img/hud/loader-bar.png');
-        this.load.image('ground', 'img/ground.png');
+        this.load.image('madagascar', 'img/madagascar.png');
     },
 
     /**
@@ -24,6 +24,7 @@ Critterer.Boot.prototype = {
      * the create method fires once the preload method is complete
      */
     create: function () {
+        
         // set max number of inputs (only one mouse, finger, curser, etc)
         this.input.maxPointers = 1;
 
@@ -41,7 +42,6 @@ Critterer.Boot.prototype = {
 
         this.input.addPointer();
         this.stage.backgroundColor = '#0099ff';
-
         this.state.start('Preloader');
     },
     update: function() {
