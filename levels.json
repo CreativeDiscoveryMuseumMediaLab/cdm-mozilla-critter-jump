@@ -1,0 +1,79 @@
+[{
+    "badObj"  : "ants",
+    "country" : "madagascar",
+    "goodObj" : "cockroaches",
+    "Facts" : [{
+        "Question" : "How Do Madagascar Hissing Cockroaches Hiss?",
+        "Answer" : "The Madagascar Hissing Cockroach is unusual because of its ability to hiss by forcing air through holes in its abdomen called spiracles."
+    },{
+        "Question" : "What do Madagascar Hissing Cockroaches Eat?",
+        "Answer" : "Madagascar Hissing Cockroaches are omnivores, meaning they feed on both plants and decaying animals."
+    }],
+    "round" : [{
+        "nets" : 5,
+        "timer" : 60,
+        "goal" : 5
+    },{
+        "nets" : 4,
+        "timer" : 60,
+        "goal" : 10
+    },{
+        "nets" : 3,
+        "timer" : 60,
+        "goal" : 15
+    }]
+},{
+    "badObj"  : "flies",
+    "country" : "mali",
+    "goodObj" : "scorpions",
+    "Facts" : [{
+        "Question" : "What Do Emporer Scorpions Eat?",
+        "Answer" : "Rarely using their stingers, Emporer Scorpions rely on their powerful pincers to both capture and eat insects and other aracnids."
+    },{
+        "Question" : "Where Do Emporer Scorpions Live?",
+        "Answer" : "Emporer scorpions are found in most tropical regions of Africa."
+    }],
+    "round" : [{
+        "nets" : 5,
+        "timer" : 60,
+        "goal" : 5
+    },{
+        "nets" : 4,
+        "timer" : 60,
+        "goal" : 10
+    },{
+        "nets" : 3,
+        "timer" : 60,
+        "goal" : 15
+    }]
+},{
+    "badObj"  : "spiders",
+    "country" : "canada",
+    "goodObj" : "walking sticks",
+    "Facts" : [{
+        "Question" : "How Big Is A Walking Stick?",
+        "Answer" : "Walking sticks come in many shapes and forms in fact, their size can range from a half an inch to a massive 13 inches."
+    },{
+        "Question" : "How Does A Walking Stick Breathe?",
+        "Answer" : "Like all insects walking sticks breath in a very unique way.  All along it's body are small holes called spiracles through which it breathes."
+    },{
+        "Question" : "How Long Do Walking Sticks Live?",
+        "Answer" : "Walking sticks usually live about one year in the wild; however, can live several years in captivity."
+    },{
+        "Question" : "What Can A Walking Stick Do?",
+        "Answer" : "Walking sticks have a very well designed defense mechanism.  Flexing it's legs it can sway it's body from side to side and perform other random movements to give off the image of being an actual stick."
+    }],
+    "round" : [{
+        "nets" : 5,
+        "timer" : 60,
+        "goal" : 5
+    },{
+        "nets" : 4,
+        "timer" : 60,
+        "goal" : 10
+    },{
+        "nets" : 3,
+        "timer" : 60,
+        "goal" : 15
+    }]
+}]
