@@ -8,7 +8,6 @@ Critterer.MainMenu = function(game) {
 };
 
 Critterer.MainMenu.prototype = {
-
         /**
          * Implements preload()
          */
@@ -21,16 +20,14 @@ Critterer.MainMenu.prototype = {
          * Implements create()
          */
         create: function() {
-            this.ground = this.add.sprite(-4, this.world.height - 75, 'ground');
-            this.ground.width = this.game.width + 8;
+
+            this.background = this.add.sprite(0, 0, 'madagascar');
 
             this.critterer_logo = this.add.sprite(this.world.centerX, this.world.centerY - 75, 'critterer_logo');
             this.critterer_logo.anchor.setTo(0.5, 0.5);
             this.critterer_logo.alpha = 0;
 
             var logo_tween = this.add.tween(this.critterer_logo);
-
-            // sprite_name.to({x: x, y: y}, duration, easing, autostart, delay);
             logo_tween.to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 100);
 
 
@@ -48,14 +45,14 @@ Critterer.MainMenu.prototype = {
         },
 
         startGame: function(pointer) {
-            this.state.start('Game');
+            this.state.start('LevelMaster');
         },
 
         /**
          * Implements update()
          */
         update: function() {
-
+        
         }
 
 };

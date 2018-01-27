@@ -3,18 +3,19 @@
 <head>
 	<title>Critterer</title>
   <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="lib/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-  <script type="text/javascript" src="lib/fancybox/jquery.fancybox.js"></script>
-  <script type="text/javascript" src="lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="lib/fancybox/helpers/jquery.fancybox-media.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="lib/phaser/phaser.js"></script>
   <script type="text/javascript" src="js/Boot.js"></script>
   <script type="text/javascript" src="js/Preloader.js"></script>
   <script type="text/javascript" src="js/MainMenu.js"></script>
+  <script type="text/javascript" src="js/LevelMaster.js"></script>
+  <script type="text/javascript" src="js/LevelIntro.js"></script>
+  <script type="text/javascript" src="js/FunFacts.js"></script>
+  <script type="text/javascript" src="js/RoundIntro.js"></script>
   <script type="text/javascript" src="js/Game.js"></script>
-  <script type="text/javascript" src="js/CutScene.js"></script>
-  <script type="text/javascript" src="js/GameOver.js"></script>
+  <script type="text/javascript" src="js/Winner.js"></script>
+  <script type="text/javascript" src="js/Credits.js"></script>
+
     
 </head>
 <body>
@@ -28,9 +29,13 @@
       game.state.add('Boot', Critterer.Boot);
       game.state.add('Preloader', Critterer.Preloader);
       game.state.add('MainMenu', Critterer.MainMenu);
+      game.state.add('LevelMaster', Critterer.LevelMaster);
+      game.state.add('LevelIntro', Critterer.LevelIntro);
+      game.state.add('FunFacts', Critterer.FunFacts);
+      game.state.add('RoundIntro', Critterer.RoundIntro);
       game.state.add('Game', Critterer.Game);
-      game.state.add('CutScene', Critterer.CutScene);
-      game.state.add('GameOver', Critterer.GameOver);
+      game.state.add('Winner', Critterer.Winner);
+      game.state.add('Credits', Critterer.Credits);
       
       // initiate game at Boot state
       game.state.start('Boot');
